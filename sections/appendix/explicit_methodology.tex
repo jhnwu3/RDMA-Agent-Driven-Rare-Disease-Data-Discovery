@@ -1,4 +1,4 @@
-\section{Explicit Methodology} \label{appendix: exp method}
+\section{Supplementary Note 8: Explicit Methodology} \label{appendix: exp method}
 \rev{Below, we define RDMA in substantially more detail.}
 
 \textbf{Problem Formulation.} Let $X \coloneqq \{x_1, x_2, \ldots, x_n\}$ be a set of clinical documents, where $X$ is the corpus, $n$ is the total number of documents, and $|X| = n$. Let $P = \{p_1, p_2, \ldots, p_m\}$ where $m$ is the total number of phenotypes within the Human Phenotype Ontology (HPO) \cite{gargano2024mode_hpo} and each $p_i$ represents a specific HPO code. Let $R = \{r_1, r_2, \ldots, r_k\}$ where $k$ is the total number of rare diseases within the Orphanet ontology \cite{weinreich2008orphanet} and each $r_j$ represents a specific ORPHA code. 
@@ -37,14 +37,14 @@ x_i = (s_1^i, s_2^i, \ldots, s_{l_i}^i)
 \end{align}
 where $s_j^i$ denotes a chunk of text (e.g., a word, sentence, multiple sentences, or pre-defined number of words) and $j \in \{1, 2, \ldots, l_i\}$ indicates the position within the document.
 
-A critical consideration in our extraction design is the trade-off associated with chunk length selection. Excessively large chunks may dilute specific meanings, resulting in noisier retrieval of phenotype or disease candidates. Conversely, overly granular chunks significantly increase computational time for entity extraction. For our implementation, we opted for sentence-level chunking, though we explore larger sizes in Appendix \ref{appendix: sentence agglomeration} to demonstrate this trade-off.
+A critical consideration in our extraction design is the trade-off associated with chunk length selection. Excessively large chunks may dilute specific meanings, resulting in noisier retrieval of phenotype or disease candidates. Conversely, overly granular chunks significantly increase computational time for entity extraction. For our implementation, we opted for sentence-level chunking, though we explore larger sizes in Supplementary Note \ref{appendix: sentence agglomeration} to demonstrate this trade-off.
 
 For each sentence $s_j^i$, we retrieve the top $k=5$ rare disease or HPO candidates $C_j^i = \{c_{1j}^i, c_{2j}^i, \ldots, c_{kj}^i\}$ from the corresponding ontology using the similarity function:
 \begin{align}
 C_j^i = \text{topk}(s_j,\mathcal{D})
 \end{align}
 
-Both the sentence and these candidates are incorporated into our prompting strategy as illustrated in Appendix \ref{appendix:prompts}. Our objective is to extract from each document $x_i$ sets of potentially relevant entities related to phenotypes or rare diseases, which we denote as:
+Both the sentence and these candidates are incorporated into our prompting strategy as illustrated in Supplementary Note \ref{appendix:prompts}. Our objective is to extract from each document $x_i$ sets of potentially relevant entities related to phenotypes or rare diseases, which we denote as:
 \begin{align}
 E_{p,uv}^i &= \{e_{p,uv,1}^i, e_{p,uv,2}^i, \ldots, e_{p,uv,n_p}^i\} \\
 E_{r,uv}^i &= \{e_{r,uv,1}^i, e_{r,uv,2}^i, \ldots, e_{r,uv,n_r}^i\}

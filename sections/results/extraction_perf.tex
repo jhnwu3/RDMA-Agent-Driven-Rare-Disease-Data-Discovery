@@ -42,14 +42,14 @@
     \bottomrule
   \end{tabular}%
   }
-  \caption{\rev{\textbf{Standardized Performance Comparison Across Phenotype and Rare Disease Mining Approaches.} We evaluate both domains side-by-side using various LLM backbones for generative methods. For Rare Disease evaluation, BioBERT and BioClinicalBERT$^\dagger$ are fine-tuned on datasets (BiolarkGSC+, RareDis) where span annotations exist and evaluated on their evaluation counterparts (CSC, MIMIC3-RD) here. ``N/A" blocks denote models whose architectures or pre-training are not applicable to the respective dataset. Colors are normalized per benchmark so that the darkest orange always reflects the highest score within each column group. FT indicates whether the model was fine-tuned on any biomedical corpus before usage. \textbf{Bold} denotes best performance, \underline{underline} denotes second best. We report our bootstrapped confidence intervals in Appendix section \ref{appdx: CIs}. }}
+  \caption{\rev{\textbf{Standardized Performance Comparison Across Phenotype and Rare Disease Mining Approaches.} We evaluate both domains side-by-side using various LLM backbones for generative methods. For Rare Disease evaluation, BioBERT and BioClinicalBERT$^\dagger$ are fine-tuned on datasets (BiolarkGSC+, RareDis) where span annotations exist and evaluated on their evaluation counterparts (CSC, MIMIC3-RD) here. ``N/A" blocks denote models whose architectures or pre-training are not applicable to the respective dataset. Colors are normalized per benchmark so that the darkest orange always reflects the highest score within each column group. FT indicates whether the model was fine-tuned on any biomedical corpus before usage. \textbf{Bold} denotes best performance, \underline{underline} denotes second best. We report our bootstrapped confidence intervals in Supplementary Note \ref{appdx: CIs}. }}
   \label{tab:main_results_combined_v3}
 \end{table}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.0\textwidth]{figs/fig2_compact_scaling.png}
-    \caption{\rev{\textbf{Performance of LLM rare disease mining performance across model sizes and approaches.} We observe that in general increasing the model sizes does not improve performance of downstream mining approaches for rare diseases beyond a certain model size and intelligence, namely the Mistral 24B model. We also observe that mining performance for baseline RAG or zero-shot approaches fluctuate dramatically as seen on the RareDis and MIMIC3-RD Entity benchmarks. }}
+    \caption{}
     \label{fig:rd_model_perf_across_sizes}
 \end{figure}
 
@@ -63,7 +63,7 @@
 \begin{wrapfigure}{r}{0.5\textwidth}
 \centering
 \includegraphics[width=0.5\textwidth]{figs/performance_cost_chart_updated.png}
-\caption{\rev{\textbf{Phenotype mining inference costs with LLMs.} RDMA uses a 4-bit quantized Mistral 24B model yet outperforms RAG-HPO variants running on both a 4-bit and full non-quantized Llama 3.3 70B, models that are substantially more expensive to run locally. Although RDMA's additional reasoning steps incur a modest overhead when normalized by model size, this cost is far smaller than the penalty of scaling to larger models.} We use GPU rental pricing from cloud-providers \cite{salad_pricing} \cite{hyperstack_gpu_pricing} to compute our estimated inference costs in Appendix \ref{appendix: cost calculations}.}
+\caption{}
 \label{fig:performance_cost}
 \end{wrapfigure}
 

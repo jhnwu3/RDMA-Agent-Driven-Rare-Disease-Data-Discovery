@@ -62,6 +62,7 @@
 \usepackage{mathtools}%
 \usepackage{array}
 \usepackage{placeins}
+\renewcommand{\theequation}{\arabic{equation}}
 
 
 % ── unified_table.tex ─────────────────────────────────────────
@@ -235,5 +236,17 @@
 \bibliography{sn-bibliography}% common bib file
 %% if required, the content of .bbl file can be included here once bbl is generated
 %%\input sn-article.bbl
+
+\section*{Figure Legends}
+
+\noindent\textbf{Figure~1.} \textbf{RDMA vs. RAG-based approaches.} (b) RAG-based approaches \cite{garcia2024_HPORAG, wu2024hybrid, yang2023enhancingphenotyperecognitionclinical} typically follow a two-stage pipeline: first extracting entities using specialized extractors like SemEHR \cite{wu2024hybrid, wu2018semehr}, general-purpose LLMs \cite{garcia2024_HPORAG}, or finetuned LLMs \cite{yang2023enhancingphenotyperecognitionclinical}, then matching these entities to HPO codes \cite{wu2018semehr, wu2024hybrid, yang2023enhancingphenotyperecognitionclinical}. (c) Our RDMA approach extends this paradigm to an agentic framework \cite{wang2024survey_agents}, doubling the number of tools in our extraction pipeline, incorporating additional reasoning steps for verification and implication detection. Specifically, armed with lab event guidelines and a clinical acronyms database, the agent is forced to reason about whether an extracted entity implies a specific phenotype or rare disease. Furthermore, similar to how annotators re-review uncertain annotations, agents are required to perform a dataset refinement step to highlight challenging and uncertain cases by comparing previous mining attempts.
+
+\noindent\textbf{Figure~2.} \textbf{Performance of LLM rare disease mining performance across model sizes and approaches.} We observe that in general increasing the model sizes does not improve performance of downstream mining approaches for rare diseases beyond a certain model size and intelligence, namely the Mistral 24B model. We also observe that mining performance for baseline RAG or zero-shot approaches fluctuate dramatically as seen on the RareDis and MIMIC3-RD Entity benchmarks.
+
+\noindent\textbf{Figure~3.} \textbf{Phenotype mining inference costs with LLMs.} RDMA uses a 4-bit quantized Mistral 24B model yet outperforms RAG-HPO variants running on both a 4-bit and full non-quantized Llama 3.3 70B, models that are substantially more expensive to run locally. Although RDMA's additional reasoning steps incur a modest overhead when normalized by model size, this cost is far smaller than the penalty of scaling to larger models. We use GPU rental pricing from cloud-providers \cite{salad_pricing} \cite{hyperstack_gpu_pricing} to compute our estimated inference costs in Supplementary Note~\ref{appendix: cost calculations}.
+
+\noindent\textbf{Figure~4.} \textbf{CSC Phenotype Extraction Qualitative Analysis.} We evaluate on 116 clinical cases (33,824 words total) from \cite{garcia2024_HPORAG}. \textbf{(a) Dataset Statistics.} Document length weakly correlates with phenotype count. Of 1,813 total phenotypes, 1,320 (72.8\%) appear explicitly while 493 (27.2\%) are implied. \textbf{(b) Qualitative Analysis.} Our method captures phenotypes implied by lab tests. Key challenges include: (1) False positives that are clinically valid but lack exact HPO matches; (2) False negatives arising from missing non-obvious entities or failing to capture long-range context. RDMA also identifies direct phenotypes like ``thyroid cancer'' that human annotators missed. \textbf{(c) Performance Breakdown.} Implied phenotypes comprise only 27.2\% of labels but account for a disproportionate share of false negatives.
+
+\noindent\textbf{Figure~5.} \textbf{RDMA outperforms local RAG-HPO across note lengths.} Real-world clinical notes (MIMIC-IV) are substantially longer than annotated case studies (median 1,320 words vs 271.5 words). While overall precision slightly decreases as note length increases (b), RDMA maintains stable recall performance (c), enabling it to outperform its RAG-based counterpart across all note lengths (a). Note count (d) shows phenotype count typically increases with document length.
 
 \end{document}

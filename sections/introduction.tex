@@ -15,6 +15,6 @@ Rare diseases affect approximately 1 in 10 Americans, constituting a significant
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth]{figs/RDAgentVRAGHPOWithOutHuman_v2.drawio.png}
-    \caption{\textbf{RDMA vs. RAG-based approaches.} (b) RAG-based approaches \cite{garcia2024_HPORAG, wu2024hybrid, yang2023enhancingphenotyperecognitionclinical} typically follow a two-stage pipeline: first extracting entities using specialized extractors like SemEHR \cite{wu2024hybrid, wu2018semehr}, general-purpose LLMs \cite{garcia2024_HPORAG}, or finetuned LLMs \cite{yang2023enhancingphenotyperecognitionclinical}, then matching these entities to HPO codes \cite{wu2018semehr, wu2024hybrid, yang2023enhancingphenotyperecognitionclinical}. (c) Our RDMA approach extends this paradigm to an agentic framework \cite{wang2024survey_agents}, doubling the number of tools in our extraction pipeline, incorporating additional reasoning steps for verification and implication detection. Specifically, armed with lab event guidelines and a clinical acronyms database, the agent is forced to reason about whether an extracted entity implies a specific phenotype or rare disease. Furthermore, similar to how annotators re-review uncertain annotations, agents are required to perform a dataset refinement step to highlight challenging and uncertain cases \rev{by comparing previous mining attempts.}}
+    \caption{}
     \label{fig:RDMAvRAG}
 \end{figure}
