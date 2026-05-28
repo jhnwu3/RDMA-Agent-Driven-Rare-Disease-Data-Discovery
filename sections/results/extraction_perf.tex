@@ -60,12 +60,12 @@
 
 \rev{\textbf{Larger models do not improve extraction performance.} Beyond 8B models, which frequently struggle to follow structured instructions, we observe that increasing model size from 24B up to proprietary models such as GPT-5 yields no consistent improvement in rare disease or phenotype extraction performance across any benchmark, with gains effectively plateauing.}
 
-\begin{wrapfigure}{r}{0.5\textwidth}
+\begin{figure}[t!]
 \centering
-\includegraphics[width=0.5\textwidth]{figs/performance_cost_chart_updated.png}
+\includegraphics[width=0.6\textwidth]{figs/performance_cost_chart_updated.png}
 \caption{}
 \label{fig:performance_cost}
-\end{wrapfigure}
+\end{figure}
 
 \rev{\textbf{RDMA provides a more a stable foundation for LLM mining performance.} Different LLMs can respond very differently to the same prompts, and as shown in Fig.~\ref{fig:rd_model_perf_across_sizes}, extraction performance varies substantially across model families in both zero-shot and RAG settings on the RareDis and MIMIC3-RD Entity benchmarks. Notably, RDMA consistently achieves the highest or comparable F1 across all configurations regardless of the underlying LLM.}
 
