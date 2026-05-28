@@ -64,6 +64,15 @@
 \usepackage{placeins}
 \renewcommand{\theequation}{\arabic{equation}}
 
+% Supplementary Note counter — keeps SI headings independent of main-paper section numbering
+% while making \ref{} resolve to the correct Supplementary Note number.
+\newcounter{suppnote}
+\renewcommand{\thesuppnote}{\arabic{suppnote}}
+\newcommand{\supnote}[1]{%
+  \refstepcounter{suppnote}%
+  \section*{Supplementary Note \thesuppnote: #1}%
+}
+
 
 % ── unified_table.tex ─────────────────────────────────────────
 \usepackage[table]{xcolor}
