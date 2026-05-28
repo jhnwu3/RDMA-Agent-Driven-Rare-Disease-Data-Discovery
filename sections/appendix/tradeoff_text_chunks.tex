@@ -1,0 +1,69 @@
+\section{Sentence Agglomeration for Faster Entity Extraction} \label{appendix: sentence agglomeration}
+
+To optimize the performance of our retrieval-enhanced entity extraction process, we implemented a sentence agglomeration strategy that combines shorter sentences to reduce computational costs.
+
+\begin{algorithm}
+\caption{Sentence Agglomeration Algorithm}
+\begin{algorithmic}[1]
+\Procedure{MergeSmallSentences}{$sentences, min\_size$}
+    \If{$sentences$ is empty}
+        \State \Return empty list
+    \EndIf
+    \If{$min\_size$ is null or $min\_size \leq 0$}
+        \State \Return $sentences$ unmodified
+    \EndIf
+    
+    \State $merged\_sentences \gets$ empty list
+    \State $current\_idx \gets 0$
+    
+    \While{$current\_idx < |sentences|$}
+        \State $current\_sentence \gets sentences[current\_idx]$
+        
+        \If{$|current\_sentence| \geq min\_size$}
+            \State Append $current\_sentence$ to $merged\_sentences$
+            \State $current\_idx \gets current\_idx + 1$
+            \State \textbf{continue}
+        \EndIf
+        
+        \State $merged\_chunk \gets current\_sentence$
+        \State $next\_idx \gets current\_idx + 1$
+        
+        \While{$next\_idx < |sentences|$ \textbf{and} $|merged\_chunk| < min\_size$}
+            \If{$merged\_chunk$ is not empty \textbf{and} $sentences[next\_idx]$ is not empty}
+                \State $merged\_chunk \gets merged\_chunk + $ " " $+ sentences[next\_idx]$
+            \Else
+                \State $merged\_chunk \gets merged\_chunk + sentences[next\_idx]$
+            \EndIf
+            \State $next\_idx \gets next\_idx + 1$
+        \EndWhile
+        
+        \State Append $merged\_chunk$ to $merged\_sentences$
+        \State $current\_idx \gets next\_idx$
+    \EndWhile
+    
+    \State \Return $merged\_sentences$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{table}[h]
+\centering
+
+\begin{tabular}{l|c|c}
+\hline
+\textbf{Metric} & \textbf{No Agglomeration} & \textbf{With Agglomeration (Min Size = 500)} \\
+\hline
+Total documents analyzed & 117 & 117 \\
+Average word count per document & 1897 & 1897 \\
+Precision & 0.89 & 0.82 \\
+Recall & 0.44 & 0.42 \\
+F1 score & 0.59 & 0.55 \\
+Extraction run time (hours) & 8:36 & 2:09 \\
+\hline
+\end{tabular}
+\caption{\textbf{Comparative Performance Metrics for Different Sized Text Chunks in RDMA for the Entiy Extraction Step.}  We observe that performance declines slightly, but we are able to extract entities at a substantially higher rate (4x faster) from over 200,000 words.}
+\end{table}
+
+Sentence agglomeration with a minimum size of 500 characters reduced processing time by 75\% with a modest trade-off in extraction quality, making this approach particularly valuable for time-sensitive applications or large document collections.
+\clearpage

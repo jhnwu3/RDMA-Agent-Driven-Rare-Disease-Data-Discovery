@@ -1,0 +1,177 @@
+\section{Explicit Methodology} \label{appendix: exp method}
+\rev{Below, we define RDMA in substantially more detail.}
+
+\textbf{Problem Formulation.} Let $X \coloneqq \{x_1, x_2, \ldots, x_n\}$ be a set of clinical documents, where $X$ is the corpus, $n$ is the total number of documents, and $|X| = n$. Let $P = \{p_1, p_2, \ldots, p_m\}$ where $m$ is the total number of phenotypes within the Human Phenotype Ontology (HPO) \cite{gargano2024mode_hpo} and each $p_i$ represents a specific HPO code. Let $R = \{r_1, r_2, \ldots, r_k\}$ where $k$ is the total number of rare diseases within the Orphanet ontology \cite{weinreich2008orphanet} and each $r_j$ represents a specific ORPHA code. 
+
+Our framework, RDMA, effectively implements two key extraction functions: 
+\begin{align}
+\Phi_P: X \rightarrow 2^P
+\end{align}
+that maps each document to its set of phenotypes, where $\Phi_P(x_i) = \{p \in P \mid p \text{ is mentioned in document } x_i\}$, and 
+\begin{align}
+\Phi_R: X \rightarrow 2^R
+\end{align}
+that maps each document to its set of rare diseases, where $\Phi_R(x_i) = \{r \in R \mid r \text{ is mentioned in document } x_i\}$. The output of RDMA is an annotated dataset $D = \{(x_i, \Phi_P(x_i), \Phi_R(x_i)) \mid x_i \in X\}$ consisting of triples of documents, their mined phenotypes, and their mined rare diseases. In essence, our objective is to identify all HPO and ORPHA codes present in each clinical document.
+
+\textbf{Tool Retrieval.} As the majority of our tools comprise databases with text content, we design them primarily as retrieval systems for LLM agent usage. 
+Given a query string $q$ (e.g., a potential phenotype or disease entity) and a database of documents $\mathcal{D} = \{d_1, d_2, \ldots, d_m\}$ from an existing tool with corresponding embeddings $\mathcal{V} = \{v_1, v_2, \ldots, v_m\}$ where $v_i \in \mathbb{R}^d$, we perform similarity search to retrieve relevant documents.
+
+The similarity between query $q$ with embedding $v_q$ and document $d_i$ with embedding $v_i$ is computed using the Euclidean distance metric:
+\begin{align}
+sim(q, d_i) = \frac{1}{1 + ||v_q - v_i||_2}
+\end{align}
+
+For each query $q$, we retrieve the top-$k$ documents $\mathcal{D}_q = \{d_{i_1}, d_{i_2}, \ldots, d_{i_k}\}$ such that topk$(q,\mathcal{D})$ is defined as:
+\begin{align}
+sim(q, d_{i_j}) \geq sim(q, d_i) \quad \forall d_i \in \mathcal{D} \setminus \mathcal{D}_q, \forall d_{i_j} \in \mathcal{D}_q
+\end{align}
+
+These retrieved documents provide contextual information necessary for entity verification and implication in subsequent stages of the RDMA framework. In our implementation, we utilize FAISS \cite{douze2025faisslibrary} for efficient indexing and searching of our document database. For embeddings, we employ MedEmbed small \cite{balachandran2024medembed} due to its optimized performance on medical tasks.
+
+\textbf{RDMA Overview.} As illustrated in Fig. \ref{fig:RDMAvRAG}, RDMA consists of four primary steps: (1) entity extraction, (2) entity verification and implication, (3) verified entity matching, and (4) dataset refinement. We detail the prompts and setup for each step below, noting that not all steps are required for every entity, as this often depends on the specific context.
+
+\subsection{Entity Extraction}
+Each document $x_i$ can be decomposed into meaningful chunks of text such as sentences or clinical notes with standard separators like commas, periods, and other lexical symbols. Formally, we represent each document as:
+\begin{align}
+x_i = (s_1^i, s_2^i, \ldots, s_{l_i}^i)
+\end{align}
+where $s_j^i$ denotes a chunk of text (e.g., a word, sentence, multiple sentences, or pre-defined number of words) and $j \in \{1, 2, \ldots, l_i\}$ indicates the position within the document.
+
+A critical consideration in our extraction design is the trade-off associated with chunk length selection. Excessively large chunks may dilute specific meanings, resulting in noisier retrieval of phenotype or disease candidates. Conversely, overly granular chunks significantly increase computational time for entity extraction. For our implementation, we opted for sentence-level chunking, though we explore larger sizes in Appendix \ref{appendix: sentence agglomeration} to demonstrate this trade-off.
+
+For each sentence $s_j^i$, we retrieve the top $k=5$ rare disease or HPO candidates $C_j^i = \{c_{1j}^i, c_{2j}^i, \ldots, c_{kj}^i\}$ from the corresponding ontology using the similarity function:
+\begin{align}
+C_j^i = \text{topk}(s_j,\mathcal{D})
+\end{align}
+
+Both the sentence and these candidates are incorporated into our prompting strategy as illustrated in Appendix \ref{appendix:prompts}. Our objective is to extract from each document $x_i$ sets of potentially relevant entities related to phenotypes or rare diseases, which we denote as:
+\begin{align}
+E_{p,uv}^i &= \{e_{p,uv,1}^i, e_{p,uv,2}^i, \ldots, e_{p,uv,n_p}^i\} \\
+E_{r,uv}^i &= \{e_{r,uv,1}^i, e_{r,uv,2}^i, \ldots, e_{r,uv,n_r}^i\}
+\end{align}
+where the subscript $uv$ indicates their "unverified" status, and the subscripts $p$ and $r$ denote phenotype and rare disease entities, respectively.
+
+\subsection{Entity Verification and Implication} \label{sec:verify-and-implication-reasoning_ex}
+We implement multiple reasoning steps for entity verification, recognizing that verification is a non-trivial process when working with clinical documents. Different verification steps are applied based on whether we are extracting phenotypes ($\Phi_P$) or rare disease mentions ($\Phi_R$). Our verification process follows these steps:
+
+\textbf{Abbreviation detection and expansion.} First, we determine whether an extracted entity is a valid clinical abbreviation. Given an unverified entity $e_{uv}^i \in E_{p,uv}^i \cup E_{r,uv}^i$, we retrieve a set of $k=5$ abbreviation candidates $A(e_{uv}^i) = \{a_1, a_2, \ldots, a_k\}$. If $e_{uv}^i \in A(e_{uv}^i)$, we expand the term to its full form $e_{exp}^i$ and forward it to the next verification stage. Otherwise, we proceed with the original term. This process can be formalized as:
+\begin{align}
+e_{next}^i = 
+\begin{cases}
+e_{exp}^i & \text{if } e_{uv}^i \in A(e_{uv}^i) \\
+e_{uv}^i & \text{otherwise}
+\end{cases}
+\end{align}
+
+\textbf{Direct entity verification.} Next, we directly verify if an entity matches any entry in the HPO or Orphanet ontologies. We retrieve $k=5$ candidates, and determine whether the entity $e_{next}^i$ and its context sentence $s_j^i$ match any ontology entry. If a match exists, we mark the entity as verified ($e_{p,v}^i$ or $e_{r,v}^i$) and proceed to matching. Otherwise, for phenotype entities, we continue to lab event detection; for rare disease entities, we conclude the verification process. The verification function can be expressed as:
+\begin{align}
+\text{isVerified}(e_{next}^i, s_j^i) = 
+\begin{cases}
+\text{True} & \text{if } \exists c \in C(e_{next}^i) : \text{matches}(e_{next}^i, c, s_j^i) \\
+\text{False} & \text{otherwise}
+\end{cases}
+\end{align}
+where $C(e_{next}^i)$ represents the top-$k$ candidates from the ontology for entity $e_{next}^i$. For rare diseases, we note we also prompt the LLM if an entity is a disease, because the Orphanet ontology can contain related treatments like lab events or biological entities \cite{weinreich2008orphanet}.
+
+\textbf{Lab event detection and implication.} For unverified implied phenotype entities, we check if they represent lab events, which often imply relevant phenotypes. We first determine if the entity contains numerical values:
+\begin{align}
+\text{containsNumbers}(e_{next}^i) = 
+\begin{cases}
+\text{True} & \text{if entity contains numerical values} \\
+\text{False} & \text{otherwise}
+\end{cases}
+\end{align}
+
+If numbers exist, we further validate whether the entity is indeed a lab event using an LLM-based classifier:
+\begin{align}
+\text{isLabEvent}(e_{next}^i) = \text{LLM\_classify}(e_{next}^i, \text{"lab event"})
+\end{align}
+
+For confirmed lab events, we retrieve the top $k=5$ lab reference ranges $L(e_{next}^i) = \{l_1, l_2, \ldots, l_k\}$ that most closely match the measured value. We then determine whether the value falls outside normal ranges:
+\begin{align}
+\text{isAbnormal}(e_{next}^i, L(e_{next}^i)) = \text{LLM\_reason}(e_{next}^i, L(e_{next}^i))
+\end{align}
+
+If abnormal, we generate the corresponding phenotype direction (elevated or lowered) to generate an implied phenotype entity.
+
+\textbf{Implied phenotype generation.} If an entity is neither a direct phenotype nor a lab event, we assess whether it directly implies a phenotype:
+\begin{align}
+\text{impliesPhenotype}(e_{next}^i) = \text{LLM\_classify}(e_{next}^i, \text{"implies phenotype"})
+\end{align}
+
+If it does, we generate the implied phenotype:
+\begin{align}
+e_{p,implied}^i = \text{LLM\_generate}(e_{next}^i, \text{"implied phenotype"})
+\end{align}
+
+\textbf{Implied phenotype verification.} Finally, we verify whether the generated phenotype exists within the HPO ontology:
+\begin{align}
+\text{existsInOntology}(e_{p,implied}^i) = 
+\begin{cases}
+\text{True} & \text{if } e_{p,implied}^i \in P \\
+\text{False} & \text{otherwise}
+\end{cases}
+\end{align}
+
+Only verified phenotypes proceed to the matching stage.
+
+\subsection{Verified Entity Matching}
+Given the original sentence context $s_j^i$ and a verified entity $e_{p,v}^i \in E_{p,v}^i$ (for phenotypes) or $e_{r,v}^i \in E_{r,v}^i$ (for rare diseases), we match each entity to its corresponding ontological code from the top $k$ candidates. For phenotype entities, this matching process assigns HPO codes:
+\begin{align}
+\hat{p}_{j}^i = \text{LLM\_match}(e_{p,v}^i, s_j^i, \text{topk}(e_{p,v}^i, \mathcal{D}_{HPO}))
+\end{align}
+where $\hat{p}_{j}^i \in P$ represents the final predicted phenotype code and $\mathcal{D}_{HPO}$ denotes the HPO database. Similarly, for rare disease entities, we assign ORPHA codes:
+\begin{align}
+\hat{r}_{j}^i = \text{LLM\_match}(e_{r,v}^i, s_j^i, \text{topk}(e_{r,v}^i, \mathcal{D}_{Orphanet}))
+\end{align}
+where $\hat{r}_{j}^i \in R$ represents the final predicted rare disease code and $\mathcal{D}_{Orphanet}$ denotes the Orphanet database.
+The complete set of predicted phenotypes and rare diseases for document $x_i$ is then:
+\begin{align}
+\hat{\Phi}_P(x_i) &= \{\hat{p}_{j}^i \mid \hat{p}_{j}^i \text{ extracted from sentence } s_j^i \text{ in document } x_i\} \\
+\hat{\Phi}_R(x_i) &= \{\hat{r}_{j}^i \mid \hat{r}_{j}^i \text{ extracted from sentence } s_j^i \text{ in document } x_i\}
+\end{align}
+This matching process follows similar workflows to those in RAG-HPO frameworks \cite{garcia2024_HPORAG}, but extends the approach to rare disease identification while maintaining consistency with our established notation.
+
+\subsection{Dataset Refinement} \label{sec: methodology - dataset refinement_ex}
+Once we have assembled a set of verified and matched entities, we compare them against historically mined data, which may include previous agent-based mining attempts or human-annotated data \cite{dong2023ontology_poor_annotations} that contained flaws.
+
+\textbf{Agentic Dataset Refinement.} Given a human or model predicted set of annotations, we re-verify existing mined entities by comparing them against newly mined annotations from RDMA. In comparing two sets of mined entities, we can compute pseudo-true positives, false positives, and false negatives.  Similar to human verification of true positives, false negatives, and false positives, our agent analyzes these categories using the verification reasoning steps defined in Section \ref{sec:verify-and-implication-reasoning}. Let $TP$, $FN$, and $FP$ represent the sets of true positives, false negatives, and false positives respectively. For each entity $e \in TP \cup FN \cup FP$, we apply the following rules:
+
+\begin{align}
+\text{flag}(e) = 
+\begin{cases}
+\text{no flag} & \text{if } e \in TP \text{ and isVerified}(e) \\
+\text{flag} & \text{if } e \in TP \text{ and } \neg\text{isVerified}(e) \\
+\text{no flag} & \text{if } e \in FN \text{ and } \neg\text{isVerified}(e) \\
+\text{flag} & \text{if } e \in FN \text{ and isVerified}(e) \\
+\text{flag} & \text{if } e \in FP \text{ and isVerified}(e) \\
+\text{no flag} & \text{if } e \in FP \text{ and } \neg\text{isVerified}(e)
+\end{cases}
+\end{align}
+
+Here, flag(e) indicates whether human expert judgment is required for a mined rare disease entity. The key idea here is that if we assume there exists noise in both mining attempts, a tertiary check is required to gauge whether or not an entity is correct. If the agent decides that a true positive or false negative, and a false positive a rare disease, then such disagreeable cases are flagged for human supervision.
+
+\subsection{Differences in Phenotype and Disease Mining Implementation} \label{sec: Methodology: diff_pheno_dis_ex}
+The document-phenotype extraction $\Phi_P$ and the document-rare disease mapping function $\Phi_R$ employ different verification steps tailored to their specific requirements, as summarized in Table \ref{tab:extraction_steps_comparison_ex}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{0.20\textwidth}|p{0.10\textwidth}|p{0.12\textwidth}|p{0.40\textwidth}|}
+\hline
+\textbf{Agentic Step} & \textbf{$\Phi_P$} & \textbf{$\Phi_R$} & \textbf{Reason} \\
+\hline
+Abbreviation detection & No & Yes & This is unneeded for phenotype benchmark. \\
+\hline
+Lab events database lookup & Yes & No & Many phenotypes are lab events. \\
+\hline
+Implied reasoning from context & Yes & No & Implying rare diseases is diagnosis not mining. \\
+\hline
+Entity Verification & HPO Check & Disease and Orphanet Check & Orphanet can contain non-disease entities. \\
+\hline
+\end{tabular}
+\caption{Comparison of agentic steps in phenotype versus rare disease extraction. RDMA employs different agentic steps for phenotype versus rare disease extraction based on task-specific requirements.}
+\label{tab:extraction_steps_comparison_ex}
+\end{table}
+
+These contrasting approaches reflect the distinct challenges inherent in each extraction task. Phenotype extraction requires inference from laboratory values and clinical observations, while rare disease extraction must carefully distinguish between common conditions and truly rare diseases while avoiding confusion with related entities such as genes, proteins, and enzymes that are also represented within the Orphanet ontology \cite{weinreich2008orphanet}. By tailoring the verification pipeline to each task's specific requirements, RDMA achieves higher accuracy without incurring unnecessary computational overhead.
+\clearpage

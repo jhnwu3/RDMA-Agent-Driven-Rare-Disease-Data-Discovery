@@ -1,0 +1,130 @@
+
+\section{Inference and Hardware Cost Estimates} \label{appendix: cost calculations}
+\rev{Here, we describe our hardware and inference costs within the context of our benchmark statistics.} While local hardware costs are based directly on the listing available for commonplace workstations, we follow a simple equation to compute our cost metrics in benchmarking phenotype extraction in Tables \ref{tab:gpu_costs} and \ref{tab:cost_calculations}. We discuss local hardware costs to run these systems in Table \ref{tab:cost_categories}. \rev{For cost reasons, our downstream performance benchmarking was done with the 4-bit quantized variants of each model when the model sizes are greater than 8B parameters. We only benchmark costs for non-quantized variants for the Llama 3.3 70B as our largest locally deployable model. Quantization was done with the bitsandbytes package \cite{dettmers2023qlora_bits}. We benchmark primarily on our case study cohort (CSC) benchmark.}
+
+% Table 1: GPU Rental Costs
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{GPU} & \textbf{Rental Cost (\$/hr)} \\
+\hline
+A6000 & 0.5 \\
+\hline
+RTX 3090 & 0.1 \\
+\hline
+\end{tabular}
+\caption{GPU rental costs per hour.}
+\label{tab:gpu_costs}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lcr}
+\hline
+\textbf{Category} & \textbf{GPU Configuration} & \textbf{Estimated Cost} \\
+\hline
+Very Low & N/A & \$120 \\
+Low & 1$\times$3090 & \$2,200 \\
+Medium & 1$\times$A6000 & \$6,520 \\
+High & 4$\times$A6000 & \$38,500 \\
+\hline
+\end{tabular}
+\caption{\textbf{Local Hardware Cost Categories.} These cost categories are referenced in the performance comparison in our discussion. We note that the approximate costs are based from current workstation prices \cite{newegg_3d5} \cite{newegg_velztorm} \cite{thinkmate_gpx} as of April 26, 2025. In principle, rule-based approaches do not need a GPU to run scalably where even a Raspberry Pi is computationally sufficient.}
+\label{tab:cost_categories}
+\end{table}
+
+
+% Table 2: MIMIC4 Notes Statistics
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|c|}
+\hline
+\textbf{Variable Name} & \textbf{Statistic} & \textbf{Total} \\
+\hline
+TN & Total Notes & 331,794 \\
+\hline
+MNL & Median MIMIC-IV Note Length (word count) & 1,320 \\
+\hline
+MCSL & Benchmark Median Case Study Length (word count) & 271.5 \\
+\hline
+\end{tabular}
+\caption{MIMIC4 Notes Statistics.}
+\label{tab:mimic4_stats}
+\end{table}
+
+% Table 3: Baseline Comparison with improved spacing for fractions
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{2.4}
+\begin{tabular}{|l|l|c|>{\centering\arraybackslash}p{4cm}|}
+\hline
+\textbf{Baseline} & \textbf{GPU} & \textbf{Run Time (m)} & \textbf{Cost Calculation} \\
+\hline
+RAG-HPO (Mistral 24B$^q$) & 1$\times$RTX 3090 & 39 & $\displaystyle\frac{39 \times 0.1}{60} \times \frac{\text{MNL} \times \text{TN}}{\text{MCSL}}$ \\
+\hline
+RAG-HPO (Llama 3.3-70B$^q$) & 1$\times$A6000 & 62 & $\displaystyle\frac{62 \times 0.5}{60} \times \frac{\text{MNL} \times \text{TN}}{\text{MCSL}}$ \\
+\hline
+RAG-HPO (Llama 3.3-70B) & 4$\times$A6000 & 70 & $\displaystyle\frac{70 \times 4 \times 0.5}{60} \times \frac{\text{MNL} \times \text{TN}}{\text{MCSL}}$ \\
+\hline
+RDMA & 1$\times$RTX 3090 & 121 & $\displaystyle\frac{121 \times 0.1}{60} \times \frac{\text{MNL} \times \text{TN}}{\text{MCSL}}$ \\
+\hline
+\end{tabular}
+\caption{Baseline comparison of different methods with their runtime and cost calculations.}
+\label{tab:cost_calculations}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{\rev{Runtime comparison on CSC dataset using Mistral 24B 4-bit quantized. Given that the CSC dataset contains 32,260 words, we have a pipeline that can extract, verify, and match HPO entiies at a rate of approximately 278 words a minute on an RTX 3090.}}
+\label{tab:runtime_mistral24b_rdma_raghpo}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Method} & \textbf{Extraction (m)} & \textbf{Verification (m)} & \textbf{Matching (m)} \\
+\midrule
+RAG HPO & 15 & --- & 24 \\
+RDMA    & 68 & 29  & 24 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% \begin{table}[h!]
+% \centering
+% \begin{tabular}{l c c c}
+% \hline
+% \textbf{Metric} & \textbf{Initial} & \textbf{Human Corrected} & \textbf{RDMA \& Human} \\
+% \hline
+% Total Documents & 117 & 117 & 117 \\
+% Documents with Annotations & 117 & 117 & 117 \\
+% Avg. Unique Rare Diseases per Note & 1.64 & 1.03 & 1.15 \\
+% Avg. Word Count Per Note & 1,897 & 1,897 & 1,897 \\
+% \hline
+% \end{tabular}
+% \caption{Dataset Comparison: Initial Processed Dataset vs. Human Corrected vs. RDMA \& Human approaches. Human correction reduces the number of unique rare diseases from 192 to 120 (-37.5\%), likely removing false positives. The RDMA \& Human approach recovers some annotations to 135 (+12.5\% from human-only), suggesting it captures valid rare diseases missed in the initial set of annotations. \textbf{Ultimately, RDMA reduces the total number of annotations requiring re-review by a human by over 63\%.} }
+% \label{tab:MIMIC3 Dataset Stats Across Annotation Sets}
+% \end{table}
+
+\begin{table}[t]
+\centering
+\caption{\rev{Statistics of rare disease NER benchmarks and phenotype datasets used for evaluation. RareDis splits: train (711 docs, 3{,}608 entities, 111{,}369 words), dev (97 docs, 525 entities, 15{,}268 words), test (203 docs, 1{,}088 entities, 31{,}042 words). For BiolarkGSC, oru phenotype training corpus, we use a random 80-10-10 split, roughly resulting in 182 train / ~23 dev / ~23 test documents. For all general LLM-based baselines, we use the entire corpus for benchmarking as they do not require training. }}
+\label{tab:datasets}
+\begin{tabular}{llrrrrr}
+\toprule
+\textbf{Category} & \textbf{Dataset} & \textbf{Docs} & \textbf{Entities} & \textbf{Total Words} & \textbf{Avg.\ Words} & \textbf{Max Words} \\
+\midrule
+\multirow{2}{*}{Phenotype} 
+    & BioLarkGSC \cite{yang2023enhancingphenotyperecognitionclinical} & 228     & 2{,}773 &  33{,}942  & 148.9   & 359   \\
+    & CSC  \cite{garcia2024_HPORAG}      & 116     & 1{,}813 &  32{,}260  & 278.1   & 675   \\
+\midrule
+\multirow{2}{*}{Rare Disease}
+    & RareDis  \cite{martinez2022raredis}  & 1{,}011 & 5{,}221 & 157{,}679  & 156.0   & 601   \\
+    & MIMIC3-RD \cite{johnson2016mimic3} & 117     &   176   & 221{,}980  & 1{,}897.3 & 6{,}726 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\clearpage
+
+

@@ -1,0 +1,46 @@
+%%%%%%%%%%%%%%%%
+\section{Performance Metric Calculations} \label{appendix: Performance Metric Calculations}
+For each clinical document $x_i$, we compare the set of ground-truth human-annotated codes with the set of predicted codes from our RDMA framework. Let $\Phi_P(x_i)$ and $\Phi_R(x_i)$ denote the ground-truth phenotype and rare disease codes for document $x_i$, respectively, and let $\hat{\Phi}_P(x_i)$ and $\hat{\Phi}_R(x_i)$ denote the corresponding predicted codes.
+
+For each document $x_i$ and each task (phenotypes or rare diseases), we define:
+
+\textbf{True Positives:}
+\begin{align}
+TP_P^i &= |\hat{\Phi}_P(x_i) \cap \Phi_P(x_i)| \\
+TP_R^i &= |\hat{\Phi}_R(x_i) \cap \Phi_R(x_i)|
+\end{align}
+
+\textbf{False Positives:}
+\begin{align}
+FP_P^i &= |\hat{\Phi}_P(x_i) \setminus \Phi_P(x_i)| \\
+FP_R^i &= |\hat{\Phi}_R(x_i) \setminus \Phi_R(x_i)|
+\end{align}
+
+\textbf{False Negatives:}
+\begin{align}
+FN_P^i &= |\Phi_P(x_i) \setminus \hat{\Phi}_P(x_i)| \\
+FN_R^i &= |\Phi_R(x_i) \setminus \hat{\Phi}_R(x_i)|
+\end{align}
+
+We then aggregate these counts across all $n$ documents in our corpus to compute overall performance metrics:
+
+\begin{align}
+TP_P &= \sum_{i=1}^{n} TP_P^i, \quad FP_P = \sum_{i=1}^{n} FP_P^i, \quad FN_P = \sum_{i=1}^{n} FN_P^i \\
+TP_R &= \sum_{i=1}^{n} TP_R^i, \quad FP_R = \sum_{i=1}^{n} FP_R^i, \quad FN_R = \sum_{i=1}^{n} FN_R^i
+\end{align}
+
+For phenotype extraction:
+\begin{align}
+\text{Precision}_P &= \frac{TP_P}{TP_P + FP_P} \\
+\text{Recall}_P &= \frac{TP_P}{TP_P + FN_P} \\
+\text{F1}_P &= 2 \cdot \frac{\text{Precision}_P \cdot \text{Recall}_P}{\text{Precision}_P + \text{Recall}_P}
+\end{align}
+
+For rare disease extraction:
+\begin{align}
+\text{Precision}_R &= \frac{TP_R}{TP_R + FP_R} \\
+\text{Recall}_R &= \frac{TP_R}{TP_R + FN_R} \\
+\text{F1}_R &= 2 \cdot \frac{\text{Precision}_R \cdot \text{Recall}_R}{\text{Precision}_R + \text{Recall}_R}
+\end{align}
+
+%%%%%%%%%%%%%%%%%

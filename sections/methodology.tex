@@ -1,0 +1,92 @@
+\section{Methodology} \label{sec:methodology}
+
+\rev{\textbf{Problem Formulation.} RDMA operates over a corpus of clinical documents and aims to identify two types of entities within each document: phenotypes, represented as HPO codes from the Human Phenotype Ontology \cite{gargano2024mode_hpo}, and rare diseases, represented as ORPHA codes from the Orphanet ontology \cite{weinreich2008orphanet}. The output is an annotated dataset where each document is paired with the set of phenotypes and rare diseases found within it.}
+
+\rev{\textbf{Tool Retrieval.} Most of RDMA's tools are structured as retrieval systems over medical databases. Given a candidate entity string, we embed it and retrieve the most semantically similar entries from the relevant ontology database using Euclidean distance over embeddings. We use FAISS \cite{douze2025faisslibrary} for efficient search and MedEmbed Small \cite{balachandran2024medembed} as our embedding model, chosen for its strong performance on medical text.}
+
+\rev{\textbf{RDMA Overview.} Algorithm \ref{alg:rdma} presents the full RDMA pipeline. At a high level, RDMA processes each clinical document sentence by sentence, using semantic search to retrieve ontology candidates and an LLM to extract entities of interest. Each candidate entity then passes through a multi-step verification pipeline before being mapped to a formal ontological code. Finally, the resulting annotations are compared against a prior annotation set, with disagreements flagged for human expert review. Not all steps apply to every entity type, phenotype extraction involves lab event detection and implied phenotype generation, while rare disease extraction focuses on abbreviation expansion and confirming that matched entries are true diseases rather than related biological entities. We describe each step below.}
+
+
+\begin{algorithm}[H]
+\caption{RDMA: Mining Pipeline}
+\label{alg:rdma}
+{\small
+\begin{algorithmic}[1]
+\Require Corpus $X$, ontologies $\mathcal{O} = \mathcal{D}_{HPO} \cup \mathcal{D}_{Orphanet}$, mode $m \in \{\text{rare}, \text{phenotype}, \text{both}\}$
+\Ensure Annotated dataset $D$
+\For{each document $x \in X$}
+    \For{each sentence $s$ in $x$}
+        \State $cands_s \gets \Call{SemanticSearch}{s,\ \mathcal{O}}$
+        \State $E \gets \Call{LLMExtract}{s,\ cands_s}$
+    \EndFor
+    \For{each entity $e \in E$}
+        \If{$m \in \{\text{rare}, \text{both}\}$}
+            \State $e \gets \Call{ExpandAbbreviation}{e}$
+            \If{$\Call{OntologyMatch}{e,\ s}$ \textbf{ and } $\Call{LLMIsDisease}{e}$}
+                \State Accept $e$ as verified rare disease
+            \EndIf
+        \EndIf
+        \If{$m \in \{\text{phenotype}, \text{both}\}$}
+            \If{$\Call{OntologyMatch}{e,\ s}$}
+                \State Accept $e$ as verified phenotype
+            \ElsIf{$\Call{IsAbnormalLabValue}{e}$}
+                \State Accept $\Call{LLMGenerateDirection}{e}$ as implied phenotype
+            \ElsIf{$\Call{LLMImpliesPhenotype}{e}$ is valid in $\mathcal{D}_{HPO}$}
+                \State Accept implied phenotype
+            \EndIf
+        \EndIf
+    \EndFor
+    \For{each verified entity $e$}
+        \State $cands_e \gets \Call{SemanticSearch}{e,\ \mathcal{O}}$
+        \State $code \gets \Call{LLMMatch}{e,\ s,\ cands_e}$
+    \EndFor
+\EndFor
+\State \Return $D$
+\end{algorithmic}
+}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{RDMA: Dataset Refinement}
+\label{alg:rdma_refinement}
+{\small
+\begin{algorithmic}[1]
+\Require $D$, prior annotations $\mathcal{A}_{prior}$
+\Ensure Flagged entities $\mathcal{F}$ for review
+\State $\mathcal{A}_{prior} \gets \Call{KeywordFilter}{\mathcal{A}_{prior}}$
+\State $TP, FN, FP \gets \Call{Compare}{D,\ \mathcal{A}_{prior}}$
+\For{each $e \in TP \cup FN \cup FP$}
+    \State $v \gets \Call{OntologyMatch}{e}$
+    \If{($e \in TP$ \textbf{ and not } $v$) \textbf{ or }}
+    \StatexX{\ \ \ ($e \in FN$ \textbf{ and } $v$) \textbf{ or }}
+    \StatexX{\ \ \ ($e \in FP$ \textbf{ and } $v$)}
+        \State $\mathcal{F} \gets \mathcal{F} \cup \{e\}$
+    \EndIf
+\EndFor
+\State \Return $\mathcal{F}$
+\end{algorithmic}
+}
+\end{algorithm}
+
+
+\subsection{Entity Extraction}
+\rev{Each document is split into sentences, and for each sentence we query the relevant ontology database to retrieve the top-5 most similar phenotype or disease candidates. Both the sentence and its candidates are passed to an LLM via $\Call{LLMExtract}{}$, which identifies any phenotype or rare disease entities worth investigating further. Sentence-level chunking balances specificity against computational cost: finer chunks yield more precise retrieval but increase processing time, a trade-off we examine further in Appendix \ref{appendix: sentence agglomeration}.}
+
+\subsection{Entity Verification and Implication} \label{sec:verify-and-implication-reasoning}
+\rev{Each extracted entity passes through a verification pipeline before being accepted. The steps differ for phenotypes versus rare diseases (see general structure in Algorithm \ref{alg:rdma}, lines 7--20).}
+
+\textbf{Abbreviation expansion.} \rev{For rare disease candidates, we first attempt to expand any clinical abbreviations via $\Call{ExpandAbbreviation}{}$ before proceeding, since abbreviation ambiguity is particularly problematic in this setting.}
+
+\textbf{Direct ontology verification.} \rev{We call $\Call{OntologyMatch}{}$ to check whether the entity genuinely corresponds to an HPO or Orphanet entry in context. For rare diseases, we additionally call $\Call{LLMIsDisease}{}$ to confirm the matched entry is a disease rather than a related entity type (e.g., a gene, protein, or enzyme) that also appears in Orphanet.}
+
+\textbf{Lab event detection and implication (phenotypes only).} \rev{If a phenotype entity is not directly verified, we check whether it describes an abnormal lab measurement via $\Call{IsAbnormalLabValue}{}$. If so, $\Call{LLMGenerateDirection}{}$ converts it into the corresponding implied phenotype (e.g., elevated creatinine $\to$ hypercreatininemia).}
+
+\textbf{Implied phenotype generation (phenotypes only).} \rev{For entities that are neither direct phenotypes nor lab events, $\Call{LLMImpliesPhenotype}{}$ checks whether the entity contextually implies a phenotype. If so, we generate and verify the implied phenotype against the HPO ontology before accepting it.}
+
+\subsection{Verified Entity Matching}
+\rev{Each verified entity is mapped to a specific ontological code by $\Call{LLMMatch}{}$, which is presented with the entity, its source sentence, and the top retrieved ontology candidates. This follows a similar workflow to RAG-HPO \cite{garcia2024_HPORAG}, extended here to cover rare disease identification.}
+
+\subsection{Dataset Refinement} \label{sec: methodology - dataset refinement}
+\rev{After assembling mined annotations, RDMA compares them against a prior annotation set using Algorithm \ref{alg:rdma_refinement}. Entities that agree across both sources are treated as likely correct; disagreements are flagged via $\Call{FlagForReview}{}$ for human expert judgment. The flagging logic is asymmetric by design: a true positive that fails re-verification, a false negative that passes, or a false positive that passes are all suspicious and warrant review, while cases where both sources consistently agree or disagree are left unflagged.}
+
+\rev{\textbf{Preliminary Filtering.} Before running RDMA refinement, we apply a set of rule-based corrections via $\Call{KeywordFilter}{}$, informed by a clinician review of the prior annotations (Appendix Table \ref{tab:Filtering_Details_ex}). This removed over 700 misannotated entries --- for example, ``MR'' had been tagged as ``Multicentric reticulohistiocytosis'' when it almost universally refers to magnetic resonance in context --- reducing the dataset from 1,073 annotations across 312 notes to 333 annotations across 117 notes (Appendix Table \ref{tab:filtering_results_ex}). For more information on the methodology such as prompts and our semantic retrieval formulation, see Appendices \ref{appendix: exp method} and \ref{appendix:prompts}.}

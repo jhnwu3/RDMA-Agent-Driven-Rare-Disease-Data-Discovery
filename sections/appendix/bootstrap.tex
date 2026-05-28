@@ -1,0 +1,143 @@
+% Requires: \usepackage{booktabs}
+% ± symbol: compile with pdflatex or xelatex
+
+%% ============================================================
+%% Table 1: Phenotype Extraction
+%% ============================================================
+\section{Bootstrapped Confidence Intervals} \label{appdx: CIs}
+Because reruns are prohibitively expensive, we minimize LLM temperature (i.e t=0.001) to limit variance. However, we still include bootstrapped confidence intervals (Tables \ref{tab:phenotype_ci} and \ref{tab:raredis_ci}).
+% Requires: \usepackage{booktabs}
+% ± symbol: compile with pdflatex or xelatex
+
+% Requires: \usepackage{booktabs}
+% ± symbol: compile with pdflatex or xelatex
+
+%% ============================================================
+%% Table 1: Phenotype Extraction
+%% ============================================================
+\begin{table*}[t]
+\centering\small\setlength{\tabcolsep}{5pt}
+\caption{Phenotype extraction results. F1$^{\pm}$ denotes the half-width of the 95\% bootstrap CI.
+BioLARK-GSC: $n{=}228$ docs; CSC: $n{=}116$ docs.
+Zeroshot LLMs score 0 on both datasets (cannot generate HPO identifiers without structured prompting).
+Best per approach group \textbf{bolded}.}
+\label{tab:phenotype_ci}
+\begin{tabular}{llcc}
+\toprule
+\textbf{Approach} & \textbf{Model} & \textbf{BioLarkGSC+} & \textbf{CSC} \\
+\midrule
+\multicolumn{4}{l}{\textit{Baselines}} \\
+& BioBERT-MRC & 0.498$^{\pm0.064}$ & 0.382$^{\pm0.030}$ \\
+& BioClinicalBERT & 0.441$^{\pm0.081}$ & 0.392$^{\pm0.031}$ \\
+& FastHPOCR & 0.603$^{\pm0.023}$ & 0.480$^{\pm0.029}$ \\
+& Dictionary & 0.326$^{\pm0.025}$ & 0.319$^{\pm0.025}$ \\
+& i2b2 & 0.491$^{\pm0.024}$ & 0.461$^{\pm0.031}$ \\
+& PhenoGPT & 0.427$^{\pm0.027}$ & 0.373$^{\pm0.035}$ \\
+\midrule
+\multicolumn{4}{l}{\textit{Zeroshot}} \\
+& GPT-5 & 0.000$^{\pm.000}$ & 0.000$^{\pm.000}$ \\
+& Llama-3 70B & 0.000$^{\pm.000}$ & 0.000$^{\pm.000}$ \\
+& Llama-3 8B & 0.000$^{\pm.000}$ & 0.000$^{\pm.000}$ \\
+& Mistral 24B & 0.000$^{\pm.000}$ & 0.000$^{\pm.000}$ \\
+& Qwen3 32B & 0.000$^{\pm.000}$ & 0.000$^{\pm.000}$ \\
+\midrule
+\multicolumn{4}{l}{\textit{RAG}} \\
+& GPT-5 & \textbf{0.525}$^{\pm0.027}$ & 0.543$^{\pm0.027}$ \\
+& Llama-3 70B & 0.474$^{\pm0.026}$ & \textbf{0.624}$^{\pm0.025}$ \\
+& Llama-3 8B & 0.345$^{\pm0.024}$ & 0.509$^{\pm0.033}$ \\
+& Mistral 24B & 0.398$^{\pm0.026}$ & 0.595$^{\pm0.034}$ \\
+& Qwen3 32B & 0.401$^{\pm0.024}$ & 0.594$^{\pm0.030}$ \\
+\midrule
+\multicolumn{4}{l}{\textit{RDMA}} \\
+& GPT-5 & 0.545$^{\pm0.029}$ & 0.646$^{\pm0.041}$ \\
+& Llama-3 70B & 0.484$^{\pm0.023}$ & 0.627$^{\pm0.027}$ \\
+& Llama-3 8B & 0.331$^{\pm0.019}$ & 0.519$^{\pm0.033}$ \\
+& Mistral 24B & \textbf{0.559}$^{\pm0.021}$ & \textbf{0.657}$^{\pm0.029}$ \\
+& Qwen3 32B & 0.473$^{\pm0.022}$ & 0.649$^{\pm0.028}$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+%% ============================================================
+%% Table 2: Rare Disease Mention Extraction
+%% ============================================================
+\begin{table*}[t]
+\centering\small\setlength{\tabcolsep}{4pt}
+\caption{Rare disease mention extraction results. F1$^{\pm}$ denotes the half-width of the 95\% bootstrap CI.
+MIMIC3-RD Entity: $n{=}117$ docs; MIMIC3-RD Code: $n{=}79$ docs; RareDis: $n{=}1{,}011$ docs.
+Best per approach group \textbf{bolded}.}
+\label{tab:raredis_ci}
+\begin{tabular}{llccc}
+\toprule
+\textbf{Approach} & \textbf{Model} & \textbf{MIMIC-III (text)} & \textbf{MIMIC-III (code)} & \textbf{RareDis} \\
+\midrule
+\multicolumn{5}{l}{\textit{Baselines}} \\
+& BioBERT-MRC & 0.046$^{\pm0.011}$ & 0.046$^{\pm0.012}$ & 0.717$^{\pm0.027}$ \\
+& BioClinicalBERT & 0.050$^{\pm0.011}$ & 0.050$^{\pm0.013}$ & 0.673$^{\pm0.032}$ \\
+& Dictionary & 0.431$^{\pm0.074}$ & 0.384$^{\pm0.066}$ & 0.555$^{\pm0.022}$ \\
+& i2b2 & 0.020$^{\pm0.004}$ & 0.019$^{\pm0.004}$ & 0.260$^{\pm0.012}$ \\
+\midrule
+\multicolumn{5}{l}{\textit{Zeroshot}} \\
+& GPT-5 & \textbf{0.497}$^{\pm0.069}$ & \textbf{0.098}$^{\pm0.056}$ & \textbf{0.810}$^{\pm0.016}$ \\
+& Llama-3 70B & 0.223$^{\pm0.038}$ & 0.000$^{\pm.000}$ & 0.705$^{\pm0.019}$ \\
+& Llama-3 8B & 0.134$^{\pm0.024}$ & 0.000$^{\pm.000}$ & 0.548$^{\pm0.020}$ \\
+& Mistral 24B & 0.228$^{\pm0.041}$ & 0.002$^{\pm0.004}$ & 0.704$^{\pm0.020}$ \\
+& Qwen3 32B & 0.326$^{\pm0.066}$ & 0.000$^{\pm.000}$ & 0.651$^{\pm0.022}$ \\
+\midrule
+\multicolumn{5}{l}{\textit{RAG}} \\
+& GPT-5 & 0.505$^{\pm0.069}$ & \textbf{0.391}$^{\pm0.068}$ & \textbf{0.826}$^{\pm0.017}$ \\
+& Llama-3 70B & 0.125$^{\pm0.023}$ & 0.139$^{\pm0.024}$ & 0.483$^{\pm0.018}$ \\
+& Llama-3 8B & 0.047$^{\pm0.012}$ & 0.025$^{\pm0.007}$ & 0.267$^{\pm0.015}$ \\
+& Mistral 24B & \textbf{0.592}$^{\pm0.068}$ & 0.032$^{\pm0.010}$ & 0.226$^{\pm0.012}$ \\
+& Qwen3 32B & 0.133$^{\pm0.027}$ & 0.143$^{\pm0.030}$ & 0.748$^{\pm0.019}$ \\
+\midrule
+\multicolumn{5}{l}{\textit{RDMA}} \\
+& GPT-5 & 0.513$^{\pm0.072}$ & 0.465$^{\pm0.083}$ & 0.780$^{\pm0.016}$ \\
+& Llama-3 70B & 0.442$^{\pm0.056}$ & 0.439$^{\pm0.069}$ & \textbf{0.845}$^{\pm0.013}$ \\
+& Llama-3 8B & 0.072$^{\pm0.013}$ & 0.097$^{\pm0.020}$ & 0.595$^{\pm0.016}$ \\
+& Mistral 24B & \textbf{0.592}$^{\pm0.068}$ & \textbf{0.526}$^{\pm0.080}$ & 0.814$^{\pm0.014}$ \\
+& Qwen3 32B & 0.528$^{\pm0.057}$ & 0.467$^{\pm0.071}$ & 0.828$^{\pm0.013}$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+To estimate the stability of micro-F1 scores without rerunning experiments,
+we apply document-level bootstrap resampling over per-document evaluation
+counts $(tp_i, fp_i, fn_i)$ drawn from each evaluated run.
+
+\paragraph{Point Estimate.}
+Micro-F1 is computed from aggregate counts over all $N$ documents:
+\begin{align}
+    \mathrm{TP} &= \sum_{i=1}^{N} tp_i, \quad
+    \mathrm{FP} = \sum_{i=1}^{N} fp_i, \quad
+    \mathrm{FN} = \sum_{i=1}^{N} fn_i, \notag \\
+    P &= \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FP}}, \quad
+    R  = \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FN}}, \quad
+    F_1 = \frac{2PR}{P + R},
+\end{align}
+with each term defined as zero when its denominator is zero.
+
+\paragraph{Resampling Procedure.}
+We draw $B = 1{,}000$ bootstrap replicates. In each replicate, $N$ documents
+are sampled with replacement from the original $N$; micro-F1 is recomputed
+from the resampled aggregate counts, yielding a distribution
+$\{F_1^{(b)}\}_{b=1}^{B}$.
+
+\paragraph{Confidence Interval.}
+A $(1-\alpha)$ confidence interval is read from the sorted bootstrap
+distribution. For a 95\% CI ($\alpha = 0.05$):
+\begin{equation}
+    \hat{F}_1^{\,\mathrm{lo}} = F_1^{(\lfloor \alpha/2 \cdot B \rfloor)},
+    \qquad
+    \hat{F}_1^{\,\mathrm{hi}} = F_1^{(\lfloor (1-\alpha/2) \cdot B \rfloor)},
+\end{equation}
+corresponding approximately to the 2.5th and 97.5th percentiles.
+All runs with fewer than 20 documents are excluded to avoid partial or
+debug evaluations.
+
+\paragraph{Rationale.}
+Resampling is performed at the document level rather than the entity or token
+level, as the clinical note or disease case is the natural unit of variance:
+some documents are substantially harder than others, and token-level
+resampling would underestimate uncertainty by treating all mentions as
+independent.

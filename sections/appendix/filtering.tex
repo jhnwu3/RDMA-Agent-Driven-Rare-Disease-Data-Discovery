@@ -1,0 +1,34 @@
+\section{MIMIC3-RD Preliminary Filtering}
+\textbf{Preliminary Filtering.} Before applying our RDMA refinement (Fig. \ref{fig:ex_annotation}), we filter out known incorrect keywords and add known rare disease mentions, as detailed in Table \ref{tab:Filtering_Details_ex}. These changes significantly impact the dataset statistics (Table \ref{tab:filtering_results_ex}), reducing annotations from 1,073 to 333. We use this filtered dataset for our case study in Section \ref{sec: improving existing annotations}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{0.3\textwidth}|p{0.7\textwidth}|}
+\hline
+\textbf{Kept Abbreviations} & HIT, ALS, and NPH \\
+\hline
+\textbf{Manually Removed Terms} & Hyperlipidemia, dyslipidemia, hypercholesterolemia \\
+\hline
+\textbf{Manually Added Terms} & papillary carcinoma, glioblastoma multiforme, transitional cell carcinoma, multifocal atrial tachycardia (mat), sarcoidosis, methemoglobinemia, central nervous system and systemic lymphoma, sclerosis cholangitis, mediastinitis, mesenteric vein thrombosis, multiple myeloma, hepatocellular carcinoma, primary cns lymphoma, sclerosing cholangitis, bechet's disease, neovascular glaucoma, meningocele, alopecia, neovascular glaucoma angle closure, pyoderma gangrenosum, budd-chiari, intraductal papillary mucinous tumor, complex tracheal stenosis, cervical stenosis, bronchiectasis, medullary sponge kidney, protein s, antiphospholipid antibody syndrome, protein c, hepatocellular ca, acute myelogenous leukemia, anaplastic thyroid carcinoma, thymoma, congenital bleeding disorder, tracheal stenosis \\
+\hline
+\end{tabular}
+\caption{\textbf{Initial Keyword-based Filtering Attempts} Our clinician identified numerous incorrectly annotated terms from the original entity set. For instance, "MR" was incorrectly tagged as "Multicentric reticulohistiocytosis" in \cite{dong2023ontology_poor_annotations}'s annotations, though it commonly refers to "magnetic resonance". Our clinician flagged all abbreviations except HIT, ALS, and NPH. We also removed common disease terms like hyperlipidemia, as their rare variants are specifically defined differently in the Orphanet ontology. Finally, our clinician manually added the terms listed above. For each added term, we checked its presence in each document and, if found, added an annotation with its corresponding ORPHA code.}
+\label{tab:Filtering_Details_ex}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l c c}
+\hline
+\textbf{} & \textbf{Original} & \textbf{After Initial Filtering} \\
+\hline
+Number of Notes & 312 & 117 \\
+Number of Annotations & 1,073 & 333 \\
+\hline
+\end{tabular}
+\caption{\textbf{Rare Disease Annotation Statistics Before and After Initial Keyword Filtering.} We eliminated over 700 misannotated terms before conducting evaluations in Section \ref{sec: improving existing annotations}.}
+\label{tab:filtering_results_ex}
+\end{table}
+\clearpage
+
+
