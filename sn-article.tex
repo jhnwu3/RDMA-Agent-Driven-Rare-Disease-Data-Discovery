@@ -64,6 +64,25 @@
 \usepackage{placeins}
 \renewcommand{\theequation}{\arabic{equation}}
 
+% ===== SUPPLEMENTARY ITEM NUMBER MAP =====
+% The SI is a SEPARATE document (supplementary.tex), so \ref{} cannot cross over.
+% These mirror the registry in supplementary.tex but expand to the LITERAL number.
+% KEEP IN SYNC with supplementary.tex if SI floats are reordered/added.
+% Reference in prose as e.g.  Supplementary Table~\sTabDatasets  /  Supplementary Fig.~\sFigExAnnotation
+% Tables
+\newcommand{\sTabGpuCosts}{1}\newcommand{\sTabCostCategories}{2}\newcommand{\sTabMimic4Stats}{3}
+\newcommand{\sTabCostCalc}{4}\newcommand{\sTabRuntime}{5}\newcommand{\sTabDatasets}{6}
+\newcommand{\sTabPhenoCI}{7}\newcommand{\sTabRareCI}{8}\newcommand{\sTabAgglom}{9}
+\newcommand{\sTabFilterDetails}{10}\newcommand{\sTabFilterResults}{11}\newcommand{\sTabLabelCorrection}{12}
+% Figures
+\newcommand{\sFigExAnnotation}{1}\newcommand{\sFigFailureModes}{2}\newcommand{\sFigTopCorrections}{3}
+\newcommand{\sFigAnnotGuidelines}{4}\newcommand{\sFigEntityExtract}{5}\newcommand{\sFigDirectPheno}{6}
+\newcommand{\sFigLabCheck}{7}\newcommand{\sFigLabAnalysis}{8}\newcommand{\sFigPhenoCorrect}{9}
+\newcommand{\sFigImpliesPheno}{10}\newcommand{\sFigImplGen}{11}\newcommand{\sFigImplReason}{12}
+\newcommand{\sFigPhenoMatch}{13}\newcommand{\sFigRDOntology}{14}\newcommand{\sFigRDDisease}{15}
+\newcommand{\sFigRDMatch}{16}
+% ===== END MAP =====
+
 % ── unified_table.tex ─────────────────────────────────────────
 \usepackage[table]{xcolor}
 \usepackage{booktabs,multirow,makecell,pifont}
