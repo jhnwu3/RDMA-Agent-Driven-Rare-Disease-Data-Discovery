@@ -1,0 +1,94 @@
+% Supplementary Information — standalone document.
+% Compiles to a single merged SI PDF for submission to npj Digital Medicine.
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{pifont}
+\usepackage{array}
+\usepackage{threeparttable}
+\usepackage{float}
+\usepackage{changepage}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage{wrapfig}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+
+% Supplementary items are labelled "Supplementary Fig. N" / "Supplementary Table N".
+\renewcommand{\figurename}{Supplementary Fig.}
+\renewcommand{\tablename}{Supplementary Table}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\theequation}{\arabic{equation}}
+
+% No tracked changes in the SI: \rev renders plain black.
+\newcommand{\rev}[1]{#1}
+
+% Helpers used by the SI tables / algorithms (mirrored from the main manuscript).
+\newcommand{\cmark}{\textcolor[rgb]{0.800,0.133,0.133}{\ding{51}}}
+\newcommand{\xmark}{\textcolor[rgb]{0.133,0.545,0.133}{\ding{55}}}
+\newcommand{\StatexX}{\Statex\hspace{\algorithmicindent}}
+
+% ===== SUPPLEMENTARY ITEM REGISTRY =====
+% One mnemonic command per SI float -> \ref{label}. Numbers auto-resolve at
+% compile time from order of appearance; the trailing comment is the live map.
+% Reference in prose as e.g.  Supplementary Table~\sTabGpuCosts  /  Supplementary Fig.~\sFigExAnnotation
+% Tables
+\newcommand{\sTabGpuCosts}{\ref{tab:gpu_costs}}                     % S.Table 1  GPU rental costs per hour
+\newcommand{\sTabCostCategories}{\ref{tab:cost_categories}}        % S.Table 2  Local hardware cost categories
+\newcommand{\sTabMimic4Stats}{\ref{tab:mimic4_stats}}              % S.Table 3  MIMIC-IV notes statistics
+\newcommand{\sTabCostCalc}{\ref{tab:cost_calculations}}            % S.Table 4  Baseline runtime & cost comparison
+\newcommand{\sTabRuntime}{\ref{tab:runtime_mistral24b_rdma_raghpo}} % S.Table 5  Runtime on CSC (Mistral 24B 4-bit)
+\newcommand{\sTabDatasets}{\ref{tab:datasets}}                     % S.Table 6  RD/phenotype benchmark statistics
+\newcommand{\sTabPhenoCI}{\ref{tab:phenotype_ci}}                  % S.Table 7  Phenotype results w/ bootstrap CIs
+\newcommand{\sTabRareCI}{\ref{tab:raredis_ci}}                     % S.Table 8  Rare-disease results w/ bootstrap CIs
+\newcommand{\sTabAgglom}{\ref{tab:agglomeration_tradeoff}}         % S.Table 9  Sentence-agglomeration trade-off
+\newcommand{\sTabFilterDetails}{\ref{tab:Filtering_Details_ex}}    % S.Table 10 Initial keyword filtering attempts
+\newcommand{\sTabFilterResults}{\ref{tab:filtering_results_ex}}    % S.Table 11 Annotation stats before/after filtering
+\newcommand{\sTabLabelCorrection}{\ref{tab:label_correction}}      % S.Table 12 RD perf across annotation sets
+% Figures
+\newcommand{\sFigExAnnotation}{\ref{fig:ex_annotation}}                       % S.Fig 1  Inappropriate annotation (NPH)
+\newcommand{\sFigFailureModes}{\ref{fig:annotator_agreement_qualitative}}     % S.Fig 2  RDMA failure modes
+\newcommand{\sFigTopCorrections}{\ref{fig:Top_Corrections}}                   % S.Fig 3  Top-5 corrected annotations
+\newcommand{\sFigAnnotGuidelines}{\ref{fig:annotator_guidelines}}            % S.Fig 4  Annotator decision process
+\newcommand{\sFigEntityExtract}{\ref{fig:EntityExtractionPrompt}}             % S.Fig 5  Entity-extraction prompts
+\newcommand{\sFigDirectPheno}{\ref{fig:DirectPhenotype}}                      % S.Fig 6  Phenotype-verification prompt
+\newcommand{\sFigLabCheck}{\ref{fig:LabTestsCheck}}                           % S.Fig 7  Lab-test check prompt
+\newcommand{\sFigLabAnalysis}{\ref{fig:LabTestsAnalysis}}                     % S.Fig 8  Lab-test implication prompt
+\newcommand{\sFigPhenoCorrect}{\ref{fig:PhenotypeCorrectnessCheck}}           % S.Fig 9  Phenotype-verification variant
+\newcommand{\sFigImpliesPheno}{\ref{fig:CheckIfImpliesPhenotypet}}            % S.Fig 10 Entity-implies-phenotype check
+\newcommand{\sFigImplGen}{\ref{fig:PhenoImplicationGeneration}}               % S.Fig 11 Phenotype-implication generation
+\newcommand{\sFigImplReason}{\ref{fig:PhenotypeImplicationReasonableCheck}}   % S.Fig 12 Implication reasonableness check
+\newcommand{\sFigPhenoMatch}{\ref{fig:PhenotypeMatching}}                     % S.Fig 13 Phenotype-matching prompt
+\newcommand{\sFigRDOntology}{\ref{fig:RDOntologyCheck}}                       % S.Fig 14 RD ontology-check prompt
+\newcommand{\sFigRDDisease}{\ref{fig:RDDiseaseCheck}}                         % S.Fig 15 RD disease-check prompt
+\newcommand{\sFigRDMatch}{\ref{fig:RDMatch}}                                  % S.Fig 16 RD matching prompt
+% ===== END REGISTRY =====
+
+\title{Supplementary Information for\\ ``RDMA: Cost Effective Agent-Driven Rare Disease Mining from Electronic Health Records''}
+\date{}
+
+\begin{document}
+\maketitle
+
+\input{sections/appendix/hardware_costs}
+\input{sections/appendix/eval}
+\input{sections/appendix/bootstrap}
+\input{sections/appendix/qualitative_eval}
+\input{sections/appendix/annotator_guidelines}
+\input{sections/appendix/tradeoff_text_chunks}
+\input{sections/appendix/filtering}
+\input{sections/appendix/prompts}
+
+\end{document}

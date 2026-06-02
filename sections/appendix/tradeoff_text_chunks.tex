@@ -1,4 +1,4 @@
-\supnote{Sentence Agglomeration for Faster Entity Extraction}\label{appendix: sentence agglomeration}
+\section*{Sentence Agglomeration for Faster Entity Extraction}\label{appendix: sentence agglomeration}
 
 To optimize the performance of our retrieval-enhanced entity extraction process, we implemented a sentence agglomeration strategy that combines shorter sentences to reduce computational costs.
 
@@ -63,6 +63,7 @@ Extraction run time (hours) & 8:36 & 2:09 \\
 \hline
 \end{tabular}
 \caption{\textbf{Comparative Performance Metrics for Different Sized Text Chunks in RDMA for the Entiy Extraction Step.}  We observe that performance declines slightly, but we are able to extract entities at a substantially higher rate (4x faster) from over 200,000 words.}
+\label{tab:agglomeration_tradeoff}
 \end{table}
 
 Sentence agglomeration with a minimum size of 500 characters reduced processing time by 75\% with a modest trade-off in extraction quality, making this approach particularly valuable for time-sensitive applications or large document collections.

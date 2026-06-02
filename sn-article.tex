@@ -64,16 +64,6 @@
 \usepackage{placeins}
 \renewcommand{\theequation}{\arabic{equation}}
 
-% Supplementary Note counter — keeps SI headings independent of main-paper section numbering
-% while making \ref{} resolve to the correct Supplementary Note number.
-\newcounter{suppnote}
-\renewcommand{\thesuppnote}{\arabic{suppnote}}
-\newcommand{\supnote}[1]{%
-  \refstepcounter{suppnote}%
-  \section*{Supplementary Note \thesuppnote: #1}%
-}
-
-
 % ── unified_table.tex ─────────────────────────────────────────
 \usepackage[table]{xcolor}
 \usepackage{booktabs,multirow,makecell,pifont}
@@ -117,7 +107,7 @@
 \newtheorem{definition}{Definition}%
 
 \raggedbottom
-%%\unnumbered% uncomment this for unnumbered level heads
+\unnumbered% unnumbered level heads (section numbers removed per journal requirement)
 
 \begin{document}
 
@@ -214,8 +204,7 @@
 % \bigskip\noindent
 % BMC journals: \url{https://www.biomedcentral.com/getpublished/editorial-policies}
 % \end{flushleft}
-\section*{Supplementary Information}
-\input{sections/appendix}
+% Supplementary Information is provided as a separate, single merged PDF (supplementary.tex).
 % \begin{appendices}
 % \input{sections/appendix}
 % \clearpage
