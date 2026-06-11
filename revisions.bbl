@@ -1,0 +1,914 @@
+%% BioMed_Central_Bib_Style_v1.01
+
+\begin{thebibliography}{49}
+% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
+\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
+\ifx \binits  \undefined \def \binits#1{#1}\fi
+\ifx \bauthor  \undefined \def \bauthor#1{#1}\fi
+\ifx \batitle  \undefined \def \batitle#1{#1}\fi
+\ifx \bjtitle  \undefined \def \bjtitle#1{#1}\fi
+\ifx \bvolume  \undefined \def \bvolume#1{\textbf{#1}}\fi
+\ifx \byear  \undefined \def \byear#1{#1}\fi
+\ifx \bissue  \undefined \def \bissue#1{#1}\fi
+\ifx \bfpage  \undefined \def \bfpage#1{#1}\fi
+\ifx \blpage  \undefined \def \blpage #1{#1}\fi
+\ifx \burl  \undefined \def \burl#1{\textsf{#1}}\fi
+\ifx \doiurl  \undefined \def \doiurl#1{\url{https://doi.org/#1}}\fi
+\ifx \betal  \undefined \def \betal{\textit{et al.}}\fi
+\ifx \binstitute  \undefined \def \binstitute#1{#1}\fi
+\ifx \binstitutionaled  \undefined \def \binstitutionaled#1{#1}\fi
+\ifx \bctitle  \undefined \def \bctitle#1{#1}\fi
+\ifx \beditor  \undefined \def \beditor#1{#1}\fi
+\ifx \bpublisher  \undefined \def \bpublisher#1{#1}\fi
+\ifx \bbtitle  \undefined \def \bbtitle#1{#1}\fi
+\ifx \bedition  \undefined \def \bedition#1{#1}\fi
+\ifx \bseriesno  \undefined \def \bseriesno#1{#1}\fi
+\ifx \blocation  \undefined \def \blocation#1{#1}\fi
+\ifx \bsertitle  \undefined \def \bsertitle#1{#1}\fi
+\ifx \bsnm \undefined \def \bsnm#1{#1}\fi
+\ifx \bsuffix \undefined \def \bsuffix#1{#1}\fi
+\ifx \bparticle \undefined \def \bparticle#1{#1}\fi
+\ifx \barticle \undefined \def \barticle#1{#1}\fi
+\bibcommenthead
+\ifx \bconfdate \undefined \def \bconfdate #1{#1}\fi
+\ifx \botherref \undefined \def \botherref #1{#1}\fi
+\ifx \url \undefined \def \url#1{\textsf{#1}}\fi
+\ifx \bchapter \undefined \def \bchapter#1{#1}\fi
+\ifx \bbook \undefined \def \bbook#1{#1}\fi
+\ifx \bcomment \undefined \def \bcomment#1{#1}\fi
+\ifx \oauthor \undefined \def \oauthor#1{#1}\fi
+\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1}\fi
+\ifx \endbibitem  \undefined \def \endbibitem {}\fi
+\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
+\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
+\csname PreBibitemsHook\endcsname
+
+%%% 1
+\bibitem[\protect\citeauthoryear{{Virginia
+  Tech}}{2025}]{VTNews2025_general_fact}
+\begin{botherref}
+\oauthor{\bsnm{{Virginia Tech}}}:
+One in 10 {Americans} Is Living with a Rare Disease.
+Virginia Tech News.
+Accessed: 2025-04-02
+(2025).
+\url{news.vt.edu/articles/2025/02/research_fralinbiomed_rarediseaseday2025_0228.html}
+\end{botherref}
+\endbibitem
+
+%%% 2
+\bibitem[\protect\citeauthoryear{Auvin et~al.}{2018}]{auvin2018problem_rarity}
+\begin{barticle}
+\bauthor{\bsnm{Auvin}, \binits{S.}},
+\bauthor{\bsnm{Irwin}, \binits{J.}},
+\bauthor{\bsnm{Abi-Aad}, \binits{P.}},
+\bauthor{\bsnm{Battersby}, \binits{A.}}:
+\batitle{The problem of rarity: estimation of prevalence in rare disease}.
+\bjtitle{Value in Health}
+\bvolume{21}(\bissue{5}),
+\bfpage{501}--\blpage{507}
+(\byear{2018})
+\end{barticle}
+\endbibitem
+
+%%% 3
+\bibitem[\protect\citeauthoryear{Cavero-Carbonell
+  et~al.}{2020}]{cavero2020icd10_to_orpha}
+\begin{barticle}
+\bauthor{\bsnm{Cavero-Carbonell}, \binits{C.}},
+\bauthor{\bsnm{Rico}, \binits{J.}},
+\bauthor{\bsnm{Garibay}, \binits{L.}},
+\bauthor{\bsnm{Garc{\'\i}a-L{\'o}pez}, \binits{M.}},
+\bauthor{\bsnm{Guardiola-Vilarroig}, \binits{S.}},
+\bauthor{\bsnm{Maceda-Rold{\'a}n}, \binits{L.}},
+\bauthor{\bsnm{Zurriaga}, \binits{O.}}:
+\batitle{From icd10 to orphacodes: paving the way towards improved
+  identification systems for rare diseases}.
+\bjtitle{European Journal of Public Health}
+\bvolume{30}(\bissue{Supplement\_5}),
+\bfpage{166}--\blpage{494}
+(\byear{2020})
+\end{barticle}
+\endbibitem
+
+%%% 4
+\bibitem[\protect\citeauthoryear{Tan
+  et~al.}{2024}]{tan2024implications_icd_codes}
+\begin{barticle}
+\bauthor{\bsnm{Tan}, \binits{A.L.}},
+\bauthor{\bsnm{Gon{\c{c}}alves}, \binits{R.S.}},
+\bauthor{\bsnm{Yuan}, \binits{W.}},
+\bauthor{\bsnm{Brat}, \binits{G.A.}},
+\bauthor{\bsnm{Gentleman}, \binits{R.}},
+\bauthor{\bsnm{Kohane}, \binits{I.S.}}:
+\batitle{Implications of mappings between international classification of
+  diseases clinical diagnosis codes and human phenotype ontology terms}.
+\bjtitle{JAMIA open}
+\bvolume{7}(\bissue{4}),
+\bfpage{118}
+(\byear{2024})
+\end{barticle}
+\endbibitem
+
+%%% 5
+\bibitem[\protect\citeauthoryear{Zhao
+  et~al.}{2026}]{zhao2026agenticrarediseasediagnosis_deeprare}
+\begin{botherref}
+\oauthor{\bsnm{Zhao}, \binits{W.}},
+\oauthor{\bsnm{Wu}, \binits{C.}},
+\oauthor{\bsnm{Fan}, \binits{Y.}},
+\oauthor{\bsnm{Zhang}, \binits{X.}},
+\oauthor{\bsnm{Qiu}, \binits{P.}},
+\oauthor{\bsnm{Sun}, \binits{Y.}},
+\oauthor{\bsnm{Zhou}, \binits{X.}},
+\oauthor{\bsnm{Wang}, \binits{Y.}},
+\oauthor{\bsnm{Sun}, \binits{X.}},
+\oauthor{\bsnm{Zhang}, \binits{Y.}},
+\oauthor{\bsnm{Yu}, \binits{Y.}},
+\oauthor{\bsnm{Sun}, \binits{K.}},
+\oauthor{\bsnm{Xie}, \binits{W.}}:
+An Agentic System for Rare Disease Diagnosis with Traceable Reasoning
+(2026).
+\url{https://arxiv.org/abs/2506.20430}
+\end{botherref}
+\endbibitem
+
+%%% 6
+\bibitem[\protect\citeauthoryear{Nguyen
+  et~al.}{2026}]{nguyen2026diagnostic_diff_diag_meta_analysis}
+\begin{botherref}
+\oauthor{\bsnm{Nguyen}, \binits{M.-H.}},
+\oauthor{\bsnm{Yang}, \binits{C.-T.}},
+\oauthor{\bsnm{Cassini}, \binits{T.A.}},
+\oauthor{\bsnm{Ma}, \binits{F.}},
+\oauthor{\bsnm{Hamid}, \binits{R.}},
+\oauthor{\bsnm{Bastarache}, \binits{L.}},
+\oauthor{\bsnm{Peterson}, \binits{J.F.}},
+\oauthor{\bsnm{Xu}, \binits{H.}},
+\oauthor{\bsnm{Li}, \binits{L.}},
+\oauthor{\bsnm{Ma}, \binits{S.}}, et al.:
+Diagnostic accuracy of large language models for rare diseases: A systematic
+  review and meta-analysis.
+medRxiv,
+2026--03
+(2026)
+\end{botherref}
+\endbibitem
+
+%%% 7
+\bibitem[\protect\citeauthoryear{Wiegreffe
+  et~al.}{2019}]{wiegreffe2019clinical_ctakes}
+\begin{bchapter}
+\bauthor{\bsnm{Wiegreffe}, \binits{S.}},
+\bauthor{\bsnm{Choi}, \binits{E.}},
+\bauthor{\bsnm{Yan}, \binits{S.}},
+\bauthor{\bsnm{Sun}, \binits{J.}},
+\bauthor{\bsnm{Eisenstein}, \binits{J.}}:
+\bctitle{Clinical concept extraction for document-level coding}.
+In: \bbtitle{Proceedings of the 18th BioNLP Workshop and Shared Task},
+pp. \bfpage{261}--\blpage{272}
+(\byear{2019})
+\end{bchapter}
+\endbibitem
+
+%%% 8
+\bibitem[\protect\citeauthoryear{Khin and Lynn}{2017}]{khin2017medical_metamap}
+\begin{bchapter}
+\bauthor{\bsnm{Khin}, \binits{N.P.P.}},
+\bauthor{\bsnm{Lynn}, \binits{K.T.}}:
+\bctitle{Medical concept extraction: A comparison of statistical and semantic
+  methods}.
+In: \bbtitle{2017 18th IEEE/ACIS International Conference on Software
+  Engineering, Artificial Intelligence, Networking and Parallel/Distributed
+  Computing (SNPD)},
+pp. \bfpage{35}--\blpage{38}
+(\byear{2017}).
+\bcomment{IEEE}
+\end{bchapter}
+\endbibitem
+
+%%% 9
+\bibitem[\protect\citeauthoryear{Gargano et~al.}{2024}]{gargano2024mode_hpo}
+\begin{barticle}
+\bauthor{\bsnm{Gargano}, \binits{M.A.}},
+\bauthor{\bsnm{Matentzoglu}, \binits{N.}},
+\bauthor{\bsnm{Coleman}, \binits{B.}},
+\bauthor{\bsnm{Addo-Lartey}, \binits{E.B.}},
+\bauthor{\bsnm{Anagnostopoulos}, \binits{A.V.}},
+\bauthor{\bsnm{Anderton}, \binits{J.}},
+\bauthor{\bsnm{Avillach}, \binits{P.}},
+\bauthor{\bsnm{Bagley}, \binits{A.M.}},
+\bauthor{\bsnm{Bak{\v{s}}tein}, \binits{E.}},
+\bauthor{\bsnm{Balhoff}, \binits{J.P.}}, \betal:
+\batitle{<? mode longauthoraffil?> the human phenotype ontology in 2024:
+  phenotypes around the world}.
+\bjtitle{Nucleic acids research}
+\bvolume{52}(\bissue{D1}),
+\bfpage{1333}--\blpage{1346}
+(\byear{2024})
+\end{barticle}
+\endbibitem
+
+%%% 10
+\bibitem[\protect\citeauthoryear{Weinreich
+  et~al.}{2008}]{weinreich2008orphanet}
+\begin{barticle}
+\bauthor{\bsnm{Weinreich}, \binits{S.S.}},
+\bauthor{\bsnm{Mangon}, \binits{R.}},
+\bauthor{\bsnm{Sikkens}, \binits{J.}},
+\bauthor{\bsnm{Teeuw}, \binits{M.E.}},
+\bauthor{\bsnm{Cornel}, \binits{M.}}:
+\batitle{Orphanet: a european database for rare diseases}.
+\bjtitle{Nederlands tijdschrift voor geneeskunde}
+\bvolume{152}(\bissue{9}),
+\bfpage{518}--\blpage{519}
+(\byear{2008})
+\end{barticle}
+\endbibitem
+
+%%% 11
+\bibitem[\protect\citeauthoryear{Dong
+  et~al.}{2023}]{dong2023ontology_poor_annotations}
+\begin{barticle}
+\bauthor{\bsnm{Dong}, \binits{H.}},
+\bauthor{\bsnm{Su{\'a}rez-Paniagua}, \binits{V.}},
+\bauthor{\bsnm{Zhang}, \binits{H.}},
+\bauthor{\bsnm{Wang}, \binits{M.}},
+\bauthor{\bsnm{Casey}, \binits{A.}},
+\bauthor{\bsnm{Davidson}, \binits{E.}},
+\bauthor{\bsnm{Chen}, \binits{J.}},
+\bauthor{\bsnm{Alex}, \binits{B.}},
+\bauthor{\bsnm{Whiteley}, \binits{W.}},
+\bauthor{\bsnm{Wu}, \binits{H.}}:
+\batitle{Ontology-driven and weakly supervised rare disease identification from
+  clinical notes}.
+\bjtitle{BMC Medical Informatics and Decision Making}
+\bvolume{23}(\bissue{1}),
+\bfpage{86}
+(\byear{2023})
+\end{barticle}
+\endbibitem
+
+%%% 12
+\bibitem[\protect\citeauthoryear{Yang
+  et~al.}{2023}]{yang2023enhancingphenotyperecognitionclinical}
+\begin{botherref}
+\oauthor{\bsnm{Yang}, \binits{J.}},
+\oauthor{\bsnm{Liu}, \binits{C.}},
+\oauthor{\bsnm{Deng}, \binits{W.}},
+\oauthor{\bsnm{Wu}, \binits{D.}},
+\oauthor{\bsnm{Weng}, \binits{C.}},
+\oauthor{\bsnm{Zhou}, \binits{Y.}},
+\oauthor{\bsnm{Wang}, \binits{K.}}:
+Enhancing Phenotype Recognition in Clinical Notes Using Large Language Models:
+  PhenoBCBERT and PhenoGPT
+(2023).
+\url{https://arxiv.org/abs/2308.06294}
+\end{botherref}
+\endbibitem
+
+%%% 13
+\bibitem[\protect\citeauthoryear{Johnson et~al.}{2016}]{johnson2016mimic3}
+\begin{barticle}
+\bauthor{\bsnm{Johnson}, \binits{A.E.}},
+\bauthor{\bsnm{Pollard}, \binits{T.J.}},
+\bauthor{\bsnm{Shen}, \binits{L.}},
+\bauthor{\bsnm{Lehman}, \binits{L.-w.H.}},
+\bauthor{\bsnm{Feng}, \binits{M.}},
+\bauthor{\bsnm{Ghassemi}, \binits{M.}},
+\bauthor{\bsnm{Moody}, \binits{B.}},
+\bauthor{\bsnm{Szolovits}, \binits{P.}},
+\bauthor{\bsnm{Anthony~Celi}, \binits{L.}},
+\bauthor{\bsnm{Mark}, \binits{R.G.}}:
+\batitle{Mimic-iii, a freely accessible critical care database}.
+\bjtitle{Scientific data}
+\bvolume{3}(\bissue{1}),
+\bfpage{1}--\blpage{9}
+(\byear{2016})
+\end{barticle}
+\endbibitem
+
+%%% 14
+\bibitem[\protect\citeauthoryear{Garcia et~al.}{2024}]{garcia2024_HPORAG}
+\begin{botherref}
+\oauthor{\bsnm{Garcia}, \binits{B.T.}},
+\oauthor{\bsnm{Westerfield}, \binits{L.}},
+\oauthor{\bsnm{Yelemali}, \binits{P.}},
+\oauthor{\bsnm{Gogate}, \binits{N.}},
+\oauthor{\bsnm{Rivera-Munoz}, \binits{E.A.}},
+\oauthor{\bsnm{Du}, \binits{H.}},
+\oauthor{\bsnm{Dawood}, \binits{M.}},
+\oauthor{\bsnm{Jolly}, \binits{A.}},
+\oauthor{\bsnm{Lupski}, \binits{J.R.}},
+\oauthor{\bsnm{Posey}, \binits{J.E.}}:
+Improving automated deep phenotyping through large language models using
+  retrieval augmented generation.
+medRxiv,
+2024--12
+(2024)
+\end{botherref}
+\endbibitem
+
+%%% 15
+\bibitem[\protect\citeauthoryear{Mart{\'\i}nez-deMiguel
+  et~al.}{2022}]{martinez2022raredis}
+\begin{barticle}
+\bauthor{\bsnm{Mart{\'\i}nez-deMiguel}, \binits{C.}},
+\bauthor{\bsnm{Segura-Bedmar}, \binits{I.}},
+\bauthor{\bsnm{Chac{\'o}n-Solano}, \binits{E.}},
+\bauthor{\bsnm{Guerrero-Aspizua}, \binits{S.}}:
+\batitle{The raredis corpus: a corpus annotated with rare diseases, their signs
+  and symptoms}.
+\bjtitle{Journal of biomedical informatics}
+\bvolume{125},
+\bfpage{103961}
+(\byear{2022})
+\end{barticle}
+\endbibitem
+
+%%% 16
+\bibitem[\protect\citeauthoryear{Edin
+  et~al.}{2023}]{edin2023automated_medical_coding_survey}
+\begin{bchapter}
+\bauthor{\bsnm{Edin}, \binits{J.}},
+\bauthor{\bsnm{Junge}, \binits{A.}},
+\bauthor{\bsnm{Havtorn}, \binits{J.D.}},
+\bauthor{\bsnm{Borgholt}, \binits{L.}},
+\bauthor{\bsnm{Maistro}, \binits{M.}},
+\bauthor{\bsnm{Ruotsalo}, \binits{T.}},
+\bauthor{\bsnm{Maal{\o}e}, \binits{L.}}:
+\bctitle{Automated medical coding on mimic-iii and mimic-iv: a critical review
+  and replicability study}.
+In: \bbtitle{Proceedings of the 46th International ACM SIGIR Conference on
+  Research and Development in Information Retrieval},
+pp. \bfpage{2572}--\blpage{2582}
+(\byear{2023})
+\end{bchapter}
+\endbibitem
+
+%%% 17
+\bibitem[\protect\citeauthoryear{Johnson et~al.}{2023}]{johnson2023mimic4_note}
+\begin{botherref}
+\oauthor{\bsnm{Johnson}, \binits{A.}}, et al.:
+{MIMIC-IV-Note: Deidentified free-text clinical notes}.
+PhysioNet
+(2023).
+\doiurl{10.13026/1n74-ne17} .
+\url{https://doi.org/10.13026/1n74-ne17}
+\end{botherref}
+\endbibitem
+
+%%% 18
+\bibitem[\protect\citeauthoryear{Wu et~al.}{2024}]{wu2024hybrid}
+\begin{barticle}
+\bauthor{\bsnm{Wu}, \binits{J.}},
+\bauthor{\bsnm{Dong}, \binits{H.}},
+\bauthor{\bsnm{Li}, \binits{Z.}},
+\bauthor{\bsnm{Wang}, \binits{H.}},
+\bauthor{\bsnm{Li}, \binits{R.}},
+\bauthor{\bsnm{Patra}, \binits{A.}},
+\bauthor{\bsnm{Dai}, \binits{C.}},
+\bauthor{\bsnm{Ali}, \binits{W.}},
+\bauthor{\bsnm{Scordis}, \binits{P.}},
+\bauthor{\bsnm{Wu}, \binits{H.}}:
+\batitle{A hybrid framework with large language models for rare disease
+  phenotyping}.
+\bjtitle{BMC Medical Informatics and Decision Making}
+\bvolume{24}(\bissue{1}),
+\bfpage{289}
+(\byear{2024})
+\end{barticle}
+\endbibitem
+
+%%% 19
+\bibitem[\protect\citeauthoryear{Chen
+  et~al.}{2024}]{chen2024rarebenchllmsserverare}
+\begin{botherref}
+\oauthor{\bsnm{Chen}, \binits{X.}},
+\oauthor{\bsnm{Mao}, \binits{X.}},
+\oauthor{\bsnm{Guo}, \binits{Q.}},
+\oauthor{\bsnm{Wang}, \binits{L.}},
+\oauthor{\bsnm{Zhang}, \binits{S.}},
+\oauthor{\bsnm{Chen}, \binits{T.}}:
+RareBench: Can LLMs Serve as Rare Diseases Specialists?
+(2024).
+\url{https://arxiv.org/abs/2402.06341}
+\end{botherref}
+\endbibitem
+
+%%% 20
+\bibitem[\protect\citeauthoryear{Gao
+  et~al.}{2024}]{gao2024retrievalaugmentedgenerationlargelanguage_RAG_SURVEY}
+\begin{botherref}
+\oauthor{\bsnm{Gao}, \binits{Y.}},
+\oauthor{\bsnm{Xiong}, \binits{Y.}},
+\oauthor{\bsnm{Gao}, \binits{X.}},
+\oauthor{\bsnm{Jia}, \binits{K.}},
+\oauthor{\bsnm{Pan}, \binits{J.}},
+\oauthor{\bsnm{Bi}, \binits{Y.}},
+\oauthor{\bsnm{Dai}, \binits{Y.}},
+\oauthor{\bsnm{Sun}, \binits{J.}},
+\oauthor{\bsnm{Wang}, \binits{M.}},
+\oauthor{\bsnm{Wang}, \binits{H.}}:
+Retrieval-Augmented Generation for Large Language Models: A Survey
+(2024).
+\url{https://arxiv.org/abs/2312.10997}
+\end{botherref}
+\endbibitem
+
+%%% 21
+\bibitem[\protect\citeauthoryear{Deisseroth
+  et~al.}{2019}]{deisseroth2019clinphen}
+\begin{barticle}
+\bauthor{\bsnm{Deisseroth}, \binits{C.A.}},
+\bauthor{\bsnm{Birgmeier}, \binits{J.}},
+\bauthor{\bsnm{Bodle}, \binits{E.E.}},
+\bauthor{\bsnm{Kohler}, \binits{J.N.}},
+\bauthor{\bsnm{Matalon}, \binits{D.R.}},
+\bauthor{\bsnm{Nazarenko}, \binits{Y.}},
+\bauthor{\bsnm{Genetti}, \binits{C.A.}},
+\bauthor{\bsnm{Brownstein}, \binits{C.A.}},
+\bauthor{\bsnm{Schmitz-Abe}, \binits{K.}},
+\bauthor{\bsnm{Schoch}, \binits{K.}}, \betal:
+\batitle{Clinphen extracts and prioritizes patient phenotypes directly from
+  medical records to expedite genetic disease diagnosis}.
+\bjtitle{Genetics in Medicine}
+\bvolume{21}(\bissue{7}),
+\bfpage{1585}--\blpage{1593}
+(\byear{2019})
+\end{barticle}
+\endbibitem
+
+%%% 22
+\bibitem[\protect\citeauthoryear{Liu et~al.}{2019}]{liu2019doc2hpo}
+\begin{barticle}
+\bauthor{\bsnm{Liu}, \binits{C.}},
+\bauthor{\bsnm{Peres~Kury}, \binits{F.S.}},
+\bauthor{\bsnm{Li}, \binits{Z.}},
+\bauthor{\bsnm{Ta}, \binits{C.}},
+\bauthor{\bsnm{Wang}, \binits{K.}},
+\bauthor{\bsnm{Weng}, \binits{C.}}:
+\batitle{Doc2hpo: a web application for efficient and accurate hpo concept
+  curation}.
+\bjtitle{Nucleic acids research}
+\bvolume{47}(\bissue{W1}),
+\bfpage{566}--\blpage{570}
+(\byear{2019})
+\end{barticle}
+\endbibitem
+
+%%% 23
+\bibitem[\protect\citeauthoryear{Yadav and Bethard}{2018}]{yadav2018survey_ner}
+\begin{bchapter}
+\bauthor{\bsnm{Yadav}, \binits{V.}},
+\bauthor{\bsnm{Bethard}, \binits{S.}}:
+\bctitle{A survey on recent advances in named entity recognition from deep
+  learning models}.
+In: \bbtitle{Proceedings of the 27th International Conference on Computational
+  Linguistics},
+pp. \bfpage{2145}--\blpage{2158}
+(\byear{2018})
+\end{bchapter}
+\endbibitem
+
+%%% 24
+\bibitem[\protect\citeauthoryear{Groza et~al.}{2024}]{groza2024fasthpocr}
+\begin{barticle}
+\bauthor{\bsnm{Groza}, \binits{T.}},
+\bauthor{\bsnm{Gration}, \binits{D.}},
+\bauthor{\bsnm{Baynam}, \binits{G.}},
+\bauthor{\bsnm{Robinson}, \binits{P.N.}}:
+\batitle{Fasthpocr: pragmatic, fast, and accurate concept recognition using the
+  human phenotype ontology}.
+\bjtitle{Bioinformatics}
+\bvolume{40}(\bissue{7}),
+\bfpage{406}
+(\byear{2024})
+\end{barticle}
+\endbibitem
+
+%%% 25
+\bibitem[\protect\citeauthoryear{Ayad
+  et~al.}{2011}]{ayad2011addressing_hipaa_azure}
+\begin{botherref}
+\oauthor{\bsnm{Ayad}, \binits{M.}},
+\oauthor{\bsnm{Rodriguez}, \binits{H.}},
+\oauthor{\bsnm{Squire}, \binits{J.}}:
+Addressing hipaa security and privacy requirements in the microsoft cloud.
+Windows\% 20Azure\% 20HIPAA\% 20Implementation\% 20Guidance. pdf
+(2011)
+\end{botherref}
+\endbibitem
+
+%%% 26
+\bibitem[\protect\citeauthoryear{Keshetti
+  et~al.}{2025}]{keshetti2025designing_cloud_hipaa}
+\begin{bchapter}
+\bauthor{\bsnm{Keshetti}, \binits{S.}}, \betal:
+\bctitle{Designing scalable and hipaa-compliant notification systems for
+  healthcare: Leveraging cloud, microservices, and secure architectures}.
+In: \bbtitle{International Journal for Research Publication and Seminar},
+vol. \bseriesno{16},
+pp. \bfpage{154}--\blpage{173}
+(\byear{2025})
+\end{bchapter}
+\endbibitem
+
+%%% 27
+\bibitem[\protect\citeauthoryear{Grady}{2015}]{grady2015institutional}
+\begin{barticle}
+\bauthor{\bsnm{Grady}, \binits{C.}}:
+\batitle{Institutional review boards: Purpose and challenges}.
+\bjtitle{Chest}
+\bvolume{148}(\bissue{5}),
+\bfpage{1148}--\blpage{1155}
+(\byear{2015})
+\end{barticle}
+\endbibitem
+
+%%% 28
+\bibitem[\protect\citeauthoryear{Sun
+  et~al.}{2024}]{sun2024activeprivacyauditingsupervised_whitebox_auditing}
+\begin{botherref}
+\oauthor{\bsnm{Sun}, \binits{Q.}},
+\oauthor{\bsnm{Wu}, \binits{H.}},
+\oauthor{\bsnm{Zhang}, \binits{X.S.}}:
+On Active Privacy Auditing in Supervised Fine-tuning for White-Box Language
+  Models
+(2024).
+\url{https://arxiv.org/abs/2411.07070}
+\end{botherref}
+\endbibitem
+
+%%% 29
+\bibitem[\protect\citeauthoryear{Wang
+  et~al.}{2024}]{wang2024surveylargelanguagemodels_biomed}
+\begin{botherref}
+\oauthor{\bsnm{Wang}, \binits{C.}},
+\oauthor{\bsnm{Li}, \binits{M.}},
+\oauthor{\bsnm{He}, \binits{J.}},
+\oauthor{\bsnm{Wang}, \binits{Z.}},
+\oauthor{\bsnm{Darzi}, \binits{E.}},
+\oauthor{\bsnm{Chen}, \binits{Z.}},
+\oauthor{\bsnm{Ye}, \binits{J.}},
+\oauthor{\bsnm{Li}, \binits{T.}},
+\oauthor{\bsnm{Su}, \binits{Y.}},
+\oauthor{\bsnm{Ke}, \binits{J.}},
+\oauthor{\bsnm{Qu}, \binits{K.}},
+\oauthor{\bsnm{Li}, \binits{S.}},
+\oauthor{\bsnm{Yu}, \binits{Y.}},
+\oauthor{\bsnm{Liò}, \binits{P.}},
+\oauthor{\bsnm{Wang}, \binits{T.}},
+\oauthor{\bsnm{Wang}, \binits{Y.G.}},
+\oauthor{\bsnm{Shen}, \binits{Y.}}:
+A Survey for Large Language Models in Biomedicine
+(2024).
+\url{https://arxiv.org/abs/2409.00133}
+\end{botherref}
+\endbibitem
+
+%%% 30
+\bibitem[\protect\citeauthoryear{Sanmartin}{2024}]{sanmartin2024kg_rag}
+\begin{botherref}
+\oauthor{\bsnm{Sanmartin}, \binits{D.}}:
+Kg-rag: Bridging the gap between knowledge and creativity.
+arXiv preprint arXiv:2405.12035
+(2024)
+\end{botherref}
+\endbibitem
+
+%%% 31
+\bibitem[\protect\citeauthoryear{Savage
+  et~al.}{2024}]{savage2024diagnostic_interpretability}
+\begin{barticle}
+\bauthor{\bsnm{Savage}, \binits{T.}},
+\bauthor{\bsnm{Nayak}, \binits{A.}},
+\bauthor{\bsnm{Gallo}, \binits{R.}},
+\bauthor{\bsnm{Rangan}, \binits{E.}},
+\bauthor{\bsnm{Chen}, \binits{J.H.}}:
+\batitle{Diagnostic reasoning prompts reveal the potential for large language
+  model interpretability in medicine}.
+\bjtitle{NPJ Digital Medicine}
+\bvolume{7}(\bissue{1}),
+\bfpage{20}
+(\byear{2024})
+\end{barticle}
+\endbibitem
+
+%%% 32
+\bibitem[\protect\citeauthoryear{Fabregat et~al.}{2018}]{fabregat2018deep_rdd}
+\begin{barticle}
+\bauthor{\bsnm{Fabregat}, \binits{H.}},
+\bauthor{\bsnm{Araujo}, \binits{L.}},
+\bauthor{\bsnm{Martinez-Romo}, \binits{J.}}:
+\batitle{Deep neural models for extracting entities and relationships in the
+  new rdd corpus relating disabilities and rare diseases}.
+\bjtitle{Computer methods and programs in biomedicine}
+\bvolume{164},
+\bfpage{121}--\blpage{129}
+(\byear{2018})
+\end{barticle}
+\endbibitem
+
+%%% 33
+\bibitem[\protect\citeauthoryear{Edin
+  et~al.}{2023}]{Edin_2023_medical_coding_review}
+\begin{bchapter}
+\bauthor{\bsnm{Edin}, \binits{J.}},
+\bauthor{\bsnm{Junge}, \binits{A.}},
+\bauthor{\bsnm{Havtorn}, \binits{J.D.}},
+\bauthor{\bsnm{Borgholt}, \binits{L.}},
+\bauthor{\bsnm{Maistro}, \binits{M.}},
+\bauthor{\bsnm{Ruotsalo}, \binits{T.}},
+\bauthor{\bsnm{Maaløe}, \binits{L.}}:
+\bctitle{Automated medical coding on mimic-iii and mimic-iv: A critical review
+  and replicability study}.
+In: \bbtitle{Proceedings of the 46th International ACM SIGIR Conference on
+  Research and Development in Information Retrieval}.
+\bsertitle{SIGIR ’23},
+pp. \bfpage{2572}--\blpage{2582}.
+\bpublisher{ACM}, \blocation{???}
+(\byear{2023}).
+\doiurl{10.1145/3539618.3591918} .
+\burl{http://dx.doi.org/10.1145/3539618.3591918}
+\end{bchapter}
+\endbibitem
+
+%%% 34
+\bibitem[\protect\citeauthoryear{Balachandran}{2024}]{balachandran2024medembed}
+\begin{botherref}
+\oauthor{\bsnm{Balachandran}, \binits{A.}}:
+MedEmbed: Medical-Focused Embedding Models.
+\url{https://github.com/abhinand5/MedEmbed}
+\end{botherref}
+\endbibitem
+
+%%% 35
+\bibitem[\protect\citeauthoryear{Segura-Bedmar
+  et~al.}{2022}]{segura2022exploring_raredis}
+\begin{barticle}
+\bauthor{\bsnm{Segura-Bedmar}, \binits{I.}},
+\bauthor{\bsnm{Camino-Perdones}, \binits{D.}},
+\bauthor{\bsnm{Guerrero-Aspizua}, \binits{S.}}:
+\batitle{Exploring deep learning methods for recognizing rare diseases and
+  their clinical manifestations from texts}.
+\bjtitle{BMC bioinformatics}
+\bvolume{23}(\bissue{1}),
+\bfpage{263}
+(\byear{2022})
+\end{barticle}
+\endbibitem
+
+%%% 36
+\bibitem[\protect\citeauthoryear{Sun
+  et~al.}{2021}]{sun2021biomedical_biobert_ner}
+\begin{barticle}
+\bauthor{\bsnm{Sun}, \binits{C.}},
+\bauthor{\bsnm{Yang}, \binits{Z.}},
+\bauthor{\bsnm{Wang}, \binits{L.}},
+\bauthor{\bsnm{Zhang}, \binits{Y.}},
+\bauthor{\bsnm{Lin}, \binits{H.}},
+\bauthor{\bsnm{Wang}, \binits{J.}}:
+\batitle{Biomedical named entity recognition using bert in the machine reading
+  comprehension framework}.
+\bjtitle{Journal of Biomedical Informatics}
+\bvolume{118},
+\bfpage{103799}
+(\byear{2021})
+\end{barticle}
+\endbibitem
+
+%%% 37
+\bibitem[\protect\citeauthoryear{Alsentzer
+  et~al.}{2019}]{alsentzer2019publiclyavailableclinicalbert}
+\begin{botherref}
+\oauthor{\bsnm{Alsentzer}, \binits{E.}},
+\oauthor{\bsnm{Murphy}, \binits{J.R.}},
+\oauthor{\bsnm{Boag}, \binits{W.}},
+\oauthor{\bsnm{Weng}, \binits{W.-H.}},
+\oauthor{\bsnm{Jin}, \binits{D.}},
+\oauthor{\bsnm{Naumann}, \binits{T.}},
+\oauthor{\bsnm{McDermott}, \binits{M.B.A.}}:
+Publicly Available Clinical BERT Embeddings
+(2019).
+\url{https://arxiv.org/abs/1904.03323}
+\end{botherref}
+\endbibitem
+
+%%% 38
+\bibitem[\protect\citeauthoryear{Lobo
+  et~al.}{2017}]{lobo2017identifying_human_phenotype_terms}
+\begin{barticle}
+\bauthor{\bsnm{Lobo}, \binits{M.}},
+\bauthor{\bsnm{Lamurias}, \binits{A.}},
+\bauthor{\bsnm{Couto}, \binits{F.M.}}:
+\batitle{Identifying human phenotype terms by combining machine learning and
+  validation rules}.
+\bjtitle{BioMed Research International}
+\bvolume{2017}(\bissue{1}),
+\bfpage{8565739}
+(\byear{2017})
+\end{barticle}
+\endbibitem
+
+%%% 39
+\bibitem[\protect\citeauthoryear{Martínez-deMiguel
+  et~al.}{2021}]{martínezdemiguel2021rarediscorpuscorpusannotated}
+\begin{botherref}
+\oauthor{\bsnm{Martínez-deMiguel}, \binits{C.}},
+\oauthor{\bsnm{Segura-Bedmar}, \binits{I.}},
+\oauthor{\bsnm{Chacón-Solano}, \binits{E.}},
+\oauthor{\bsnm{Guerrero-Aspizua}, \binits{S.}}:
+The RareDis corpus: a corpus annotated with rare diseases, their signs and
+  symptoms
+(2021).
+\url{https://arxiv.org/abs/2108.01204}
+\end{botherref}
+\endbibitem
+
+%%% 40
+\bibitem[\protect\citeauthoryear{Chen
+  et~al.}{2025}]{chen2025rareagentsadvancingraredisease}
+\begin{botherref}
+\oauthor{\bsnm{Chen}, \binits{X.}},
+\oauthor{\bsnm{Jin}, \binits{Y.}},
+\oauthor{\bsnm{Mao}, \binits{X.}},
+\oauthor{\bsnm{Wang}, \binits{L.}},
+\oauthor{\bsnm{Zhang}, \binits{S.}},
+\oauthor{\bsnm{Chen}, \binits{T.}}:
+RareAgents: Advancing Rare Disease Care through LLM-Empowered
+  Multi-disciplinary Team
+(2025).
+\url{https://arxiv.org/abs/2412.12475}
+\end{botherref}
+\endbibitem
+
+%%% 41
+\bibitem[\protect\citeauthoryear{Germain
+  et~al.}{2025}]{germain2025applyingAI_RD}
+\begin{barticle}
+\bauthor{\bsnm{Germain}, \binits{D.P.}},
+\bauthor{\bsnm{Gruson}, \binits{D.}},
+\bauthor{\bsnm{Malcles}, \binits{M.}},
+\bauthor{\bsnm{Garcelon}, \binits{N.}}:
+\batitle{Applying artificial intelligence to rare diseases: a literature review
+  highlighting lessons from fabry disease}.
+\bjtitle{Orphanet Journal of Rare Diseases}
+\bvolume{20},
+\bfpage{186}
+(\byear{2025})
+\end{barticle}
+\endbibitem
+
+%%% 42
+\bibitem[\protect\citeauthoryear{Mazzucato
+  et~al.}{2023}]{mazzucato2023orphacodes_better}
+\begin{barticle}
+\bauthor{\bsnm{Mazzucato}, \binits{M.}},
+\bauthor{\bsnm{Pozza}, \binits{L.V.D.}},
+\bauthor{\bsnm{Facchin}, \binits{P.}},
+\bauthor{\bsnm{Angin}, \binits{C.}},
+\bauthor{\bsnm{Agius}, \binits{F.}},
+\bauthor{\bsnm{Cavero-Carbonell}, \binits{C.}},
+\bauthor{\bsnm{Corrochano}, \binits{V.}},
+\bauthor{\bsnm{Hanusova}, \binits{K.}},
+\bauthor{\bsnm{Kirch}, \binits{K.}},
+\bauthor{\bsnm{Lambert}, \binits{D.}}, \betal:
+\batitle{Orphacodes use for the coding of rare diseases: comparison of the
+  accuracy and cross country comparability}.
+\bjtitle{Orphanet Journal of Rare Diseases}
+\bvolume{18}(\bissue{1}),
+\bfpage{267}
+(\byear{2023})
+\end{barticle}
+\endbibitem
+
+%%% 43
+\bibitem[\protect\citeauthoryear{Cheng et~al.}{2023}]{cheng-etal-2023-mdace}
+\begin{bchapter}
+\bauthor{\bsnm{Cheng}, \binits{H.}},
+\bauthor{\bsnm{Jafari}, \binits{R.}},
+\bauthor{\bsnm{Russell}, \binits{A.}},
+\bauthor{\bsnm{Klopfer}, \binits{R.}},
+\bauthor{\bsnm{Lu}, \binits{E.}},
+\bauthor{\bsnm{Striner}, \binits{B.}},
+\bauthor{\bsnm{Gormley}, \binits{M.}}:
+\bctitle{{MDACE}: {MIMIC} documents annotated with code evidence}.
+In: \beditor{\bsnm{Rogers}, \binits{A.}},
+\beditor{\bsnm{Boyd-Graber}, \binits{J.}},
+\beditor{\bsnm{Okazaki}, \binits{N.}} (eds.)
+\bbtitle{Proceedings of the 61st Annual Meeting of the Association for
+  Computational Linguistics (Volume 1: Long Papers)},
+pp. \bfpage{7534}--\blpage{7550}.
+\bpublisher{Association for Computational Linguistics},
+\blocation{Toronto, Canada}
+(\byear{2023}).
+\doiurl{10.18653/v1/2023.acl-long.416} .
+\burl{https://aclanthology.org/2023.acl-long.416/}
+\end{bchapter}
+\endbibitem
+
+%%% 44
+\bibitem[\protect\citeauthoryear{Johnson et~al.}{2023}]{johnson2023mimic4}
+\begin{barticle}
+\bauthor{\bsnm{Johnson}, \binits{A.E.}},
+\bauthor{\bsnm{Bulgarelli}, \binits{L.}},
+\bauthor{\bsnm{Shen}, \binits{L.}},
+\bauthor{\bsnm{Gayles}, \binits{A.}},
+\bauthor{\bsnm{Shammout}, \binits{A.}},
+\bauthor{\bsnm{Horng}, \binits{S.}},
+\bauthor{\bsnm{Pollard}, \binits{T.J.}},
+\bauthor{\bsnm{Hao}, \binits{S.}},
+\bauthor{\bsnm{Moody}, \binits{B.}},
+\bauthor{\bsnm{Gow}, \binits{B.}}, \betal:
+\batitle{Mimic-iv, a freely accessible electronic health record dataset}.
+\bjtitle{Scientific data}
+\bvolume{10}(\bissue{1}),
+\bfpage{1}
+(\byear{2023})
+\end{barticle}
+\endbibitem
+
+%%% 45
+\bibitem[\protect\citeauthoryear{Douze et~al.}{2025}]{douze2025faisslibrary}
+\begin{botherref}
+\oauthor{\bsnm{Douze}, \binits{M.}},
+\oauthor{\bsnm{Guzhva}, \binits{A.}},
+\oauthor{\bsnm{Deng}, \binits{C.}},
+\oauthor{\bsnm{Johnson}, \binits{J.}},
+\oauthor{\bsnm{Szilvasy}, \binits{G.}},
+\oauthor{\bsnm{Mazaré}, \binits{P.-E.}},
+\oauthor{\bsnm{Lomeli}, \binits{M.}},
+\oauthor{\bsnm{Hosseini}, \binits{L.}},
+\oauthor{\bsnm{Jégou}, \binits{H.}}:
+The Faiss library
+(2025).
+\url{https://arxiv.org/abs/2401.08281}
+\end{botherref}
+\endbibitem
+
+%%% 46
+\bibitem[\protect\citeauthoryear{Wu et~al.}{2018}]{wu2018semehr}
+\begin{barticle}
+\bauthor{\bsnm{Wu}, \binits{H.}},
+\bauthor{\bsnm{Toti}, \binits{G.}},
+\bauthor{\bsnm{Morley}, \binits{K.I.}},
+\bauthor{\bsnm{Ibrahim}, \binits{Z.M.}},
+\bauthor{\bsnm{Folarin}, \binits{A.}},
+\bauthor{\bsnm{Jackson}, \binits{R.}},
+\bauthor{\bsnm{Kartoglu}, \binits{I.}},
+\bauthor{\bsnm{Agrawal}, \binits{A.}},
+\bauthor{\bsnm{Stringer}, \binits{C.}},
+\bauthor{\bsnm{Gale}, \binits{D.}}, \betal:
+\batitle{Semehr: A general-purpose semantic search system to surface semantic
+  data from clinical notes for tailored care, trial recruitment, and clinical
+  research}.
+\bjtitle{Journal of the American Medical Informatics Association}
+\bvolume{25}(\bissue{5}),
+\bfpage{530}--\blpage{537}
+(\byear{2018})
+\end{barticle}
+\endbibitem
+
+%%% 47
+\bibitem[\protect\citeauthoryear{Wang et~al.}{2024}]{wang2024survey_agents}
+\begin{barticle}
+\bauthor{\bsnm{Wang}, \binits{L.}},
+\bauthor{\bsnm{Ma}, \binits{C.}},
+\bauthor{\bsnm{Feng}, \binits{X.}},
+\bauthor{\bsnm{Zhang}, \binits{Z.}},
+\bauthor{\bsnm{Yang}, \binits{H.}},
+\bauthor{\bsnm{Zhang}, \binits{J.}},
+\bauthor{\bsnm{Chen}, \binits{Z.}},
+\bauthor{\bsnm{Tang}, \binits{J.}},
+\bauthor{\bsnm{Chen}, \binits{X.}},
+\bauthor{\bsnm{Lin}, \binits{Y.}}, \betal:
+\batitle{A survey on large language model based autonomous agents}.
+\bjtitle{Frontiers of Computer Science}
+\bvolume{18}(\bissue{6}),
+\bfpage{186345}
+(\byear{2024})
+\end{barticle}
+\endbibitem
+
+%%% 48
+\bibitem[\protect\citeauthoryear{Pricing}{2025}]{salad_pricing}
+\begin{botherref}
+\oauthor{\bsnm{Pricing}, \binits{S.}}:
+Pricing
+(2025).
+\url{https://salad.com/pricing}
+\end{botherref}
+\endbibitem
+
+%%% 49
+\bibitem[\protect\citeauthoryear{Hyperstack}{2025}]{hyperstack_gpu_pricing}
+\begin{botherref}
+\oauthor{\bsnm{Hyperstack}}:
+GPU Pricing
+(2025).
+\url{https://www.hyperstack.cloud/gpu-pricing}
+\end{botherref}
+\endbibitem
+
+\end{thebibliography}
