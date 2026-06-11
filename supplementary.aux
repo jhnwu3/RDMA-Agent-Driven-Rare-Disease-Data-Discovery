@@ -1,0 +1,108 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{dettmers2023qlora_bits}
+\citation{newegg_3d5}
+\citation{newegg_velztorm}
+\citation{thinkmate_gpx}
+\citation{newegg_3d5}
+\citation{newegg_velztorm}
+\citation{thinkmate_gpx}
+\citation{yang2023enhancingphenotyperecognitionclinical}
+\citation{garcia2024_HPORAG}
+\citation{martinez2022raredis}
+\citation{johnson2016mimic3}
+\newlabel{appendix: cost calculations}{{}{1}{Inference and Hardware Cost Estimates}{section*.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces GPU rental costs per hour.}}{1}{table.1}\protected@file@percent }
+\newlabel{tab:gpu_costs}{{1}{1}{GPU rental costs per hour}{table.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textbf  {Local Hardware Cost Categories.} These cost categories are referenced in the performance comparison in our discussion. We note that the approximate costs are based from current workstation prices \cite  {newegg_3d5} \cite  {newegg_velztorm} \cite  {thinkmate_gpx} as of April 26, 2025. In principle, rule-based approaches do not need a GPU to run scalably where even a Raspberry Pi is computationally sufficient.}}{1}{table.2}\protected@file@percent }
+\newlabel{tab:cost_categories}{{2}{1}{\textbf {Local Hardware Cost Categories.} These cost categories are referenced in the performance comparison in our discussion. We note that the approximate costs are based from current workstation prices \cite {newegg_3d5} \cite {newegg_velztorm} \cite {thinkmate_gpx} as of April 26, 2025. In principle, rule-based approaches do not need a GPU to run scalably where even a Raspberry Pi is computationally sufficient}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces MIMIC4 Notes Statistics.}}{1}{table.3}\protected@file@percent }
+\newlabel{tab:mimic4_stats}{{3}{1}{MIMIC4 Notes Statistics}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Baseline comparison of different methods with their runtime and cost calculations.}}{2}{table.4}\protected@file@percent }
+\newlabel{tab:cost_calculations}{{4}{2}{Baseline comparison of different methods with their runtime and cost calculations}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Runtime comparison on CSC dataset using Mistral 24B 4-bit quantized. Given that the CSC dataset contains 32,260 words, we have a pipeline that can extract, verify, and match HPO entiies at a rate of approximately 278 words a minute on an RTX 3090.}}{2}{table.5}\protected@file@percent }
+\newlabel{tab:runtime_mistral24b_rdma_raghpo}{{5}{2}{\rev {Runtime comparison on CSC dataset using Mistral 24B 4-bit quantized. Given that the CSC dataset contains 32,260 words, we have a pipeline that can extract, verify, and match HPO entiies at a rate of approximately 278 words a minute on an RTX 3090.}}{table.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Statistics of rare disease NER benchmarks and phenotype datasets used for evaluation. RareDis splits: train (711 docs, 3{,}608 entities, 111{,}369 words), dev (97 docs, 525 entities, 15{,}268 words), test (203 docs, 1{,}088 entities, 31{,}042 words). For BiolarkGSC, oru phenotype training corpus, we use a random 80-10-10 split, roughly resulting in 182 train / ~23 dev / ~23 test documents. For all general LLM-based baselines, we use the entire corpus for benchmarking as they do not require training. }}{2}{table.6}\protected@file@percent }
+\newlabel{tab:datasets}{{6}{2}{\rev {Statistics of rare disease NER benchmarks and phenotype datasets used for evaluation. RareDis splits: train (711 docs, 3{,}608 entities, 111{,}369 words), dev (97 docs, 525 entities, 15{,}268 words), test (203 docs, 1{,}088 entities, 31{,}042 words). For BiolarkGSC, oru phenotype training corpus, we use a random 80-10-10 split, roughly resulting in 182 train / ~23 dev / ~23 test documents. For all general LLM-based baselines, we use the entire corpus for benchmarking as they do not require training. }}{table.6}{}}
+\newlabel{appendix: Performance Metric Calculations}{{}{3}{Performance Metric Calculations}{section*.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Phenotype extraction results. F1$^{\pm }$ denotes the half-width of the 95\% bootstrap CI. BioLARK-GSC: $n{=}228$ docs; CSC: $n{=}116$ docs. Zeroshot LLMs score 0 on both datasets (cannot generate HPO identifiers without structured prompting). Best per approach group \textbf  {bolded}.}}{4}{table.7}\protected@file@percent }
+\newlabel{tab:phenotype_ci}{{7}{4}{Phenotype extraction results. F1$^{\pm }$ denotes the half-width of the 95\% bootstrap CI. BioLARK-GSC: $n{=}228$ docs; CSC: $n{=}116$ docs. Zeroshot LLMs score 0 on both datasets (cannot generate HPO identifiers without structured prompting). Best per approach group \textbf {bolded}}{table.7}{}}
+\newlabel{appdx: CIs}{{}{4}{Bootstrapped Confidence Intervals}{section*.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Point Estimate.}{4}{section*.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Rare disease mention extraction results. F1$^{\pm }$ denotes the half-width of the 95\% bootstrap CI. MIMIC3-RD Entity: $n{=}117$ docs; MIMIC3-RD Code: $n{=}79$ docs; RareDis: $n{=}1{,}011$ docs. Best per approach group \textbf  {bolded}.}}{5}{table.8}\protected@file@percent }
+\newlabel{tab:raredis_ci}{{8}{5}{Rare disease mention extraction results. F1$^{\pm }$ denotes the half-width of the 95\% bootstrap CI. MIMIC3-RD Entity: $n{=}117$ docs; MIMIC3-RD Code: $n{=}79$ docs; RareDis: $n{=}1{,}011$ docs. Best per approach group \textbf {bolded}}{table.8}{}}
+\@writefile{toc}{\contentsline {paragraph}{Resampling Procedure.}{5}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Confidence Interval.}{5}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Rationale.}{5}{section*.7}\protected@file@percent }
+\citation{dong2023ontology_poor_annotations}
+\citation{dong2023ontology_poor_annotations}
+\citation{dong2023ontology_poor_annotations}
+\citation{dong2023ontology_poor_annotations}
+\citation{weinreich2008orphanet}
+\citation{dong2023ontology_poor_annotations}
+\citation{weinreich2008orphanet}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {Example of Inappropriate Annotation in Noisy Dataset.} We note that while NPH as an abbreivation can be related to ``normal pressure hydrocephalus" or other related conditions in the Orphanet ontology as annotated by \cite  {dong2023ontology_poor_annotations}, NPH here in this context is actually referring to neutral protamine hagedorn, a type of insulin used to treat diabetes. }}{6}{figure.1}\protected@file@percent }
+\newlabel{fig:ex_annotation}{{1}{6}{\textbf {Example of Inappropriate Annotation in Noisy Dataset.} We note that while NPH as an abbreivation can be related to ``normal pressure hydrocephalus" or other related conditions in the Orphanet ontology as annotated by \cite {dong2023ontology_poor_annotations}, NPH here in this context is actually referring to neutral protamine hagedorn, a type of insulin used to treat diabetes}{figure.1}{}}
+\newlabel{appendix: dataset refinement}{{}{6}{\rev {AI Assisted Corrections and Annotations on MIMIC-III Corpus}}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textbf  {Failure Modes of RDMA in Rare Disease Mining.} When reviewing existing annotations, we showcase two cases where our human annotator disagrees with RDMA's refinement step. Specifically, we see that our refinement agent fails to classify portal vein thrombosis as a rare disease, primarily because its Orphanet listing ``Non-cirrhotic and non-tumoral portal vein thrombosis" does not exactly match the entity ``portal vein thrombosis". On the other hand, while the agent is able to classify ``HIT" as ``heparin induced thrombocytopenia", it does not capture the context "which was negative" properly.}}{7}{figure.2}\protected@file@percent }
+\newlabel{fig:annotator_agreement_qualitative}{{2}{7}{\textbf {Failure Modes of RDMA in Rare Disease Mining.} When reviewing existing annotations, we showcase two cases where our human annotator disagrees with RDMA's refinement step. Specifically, we see that our refinement agent fails to classify portal vein thrombosis as a rare disease, primarily because its Orphanet listing ``Non-cirrhotic and non-tumoral portal vein thrombosis" does not exactly match the entity ``portal vein thrombosis". On the other hand, while the agent is able to classify ``HIT" as ``heparin induced thrombocytopenia", it does not capture the context "which was negative" properly}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textbf  {Top 5 Corrected Annotations with RDMA.} RDMA effectively assists human annotation by identifying errors in the noisy historical dataset from \cite  {dong2023ontology_poor_annotations}. The figure highlights the top 5 corrections, including both false negatives (a) such as seizure disorder incorrectly labeled as a rare disease in Orphanet, and false positives (b) that were missed in the initial annotations. Of the 72 annotations flagged by RDMA for human review, 55 (76.4\%) were correctly identified as erroneous, demonstrating its value as an annotation assistant for prioritizing human supervision. While hemochromatosis is typically considered a rare condition, in ICU contexts such as MIMIC notes, our physician deemed that to not necessarily be the case. Furthermore, Orphanet \cite  {weinreich2008orphanet} makes a distinction between \textbf  {rare} hemochromatosis and hemochromatosis. }}{7}{figure.3}\protected@file@percent }
+\newlabel{fig:Top_Corrections}{{3}{7}{\textbf {Top 5 Corrected Annotations with RDMA.} RDMA effectively assists human annotation by identifying errors in the noisy historical dataset from \cite {dong2023ontology_poor_annotations}. The figure highlights the top 5 corrections, including both false negatives (a) such as seizure disorder incorrectly labeled as a rare disease in Orphanet, and false positives (b) that were missed in the initial annotations. Of the 72 annotations flagged by RDMA for human review, 55 (76.4\%) were correctly identified as erroneous, demonstrating its value as an annotation assistant for prioritizing human supervision. While hemochromatosis is typically considered a rare condition, in ICU contexts such as MIMIC notes, our physician deemed that to not necessarily be the case. Furthermore, Orphanet \cite {weinreich2008orphanet} makes a distinction between \textbf {rare} hemochromatosis and hemochromatosis}{figure.3}{}}
+\citation{dong2023ontology_poor_annotations}
+\citation{dong2023ontology_poor_annotations}
+\newlabel{appendix:annotator guidelines}{{}{8}{Annotator Guidelines}{section*.9}{}}
+\@writefile{toc}{\contentsline {paragraph}{Inter-Annotator Agreement.}{8}{section*.10}\protected@file@percent }
+\newlabel{appendix: sentence agglomeration}{{}{8}{Sentence Agglomeration for Faster Entity Extraction}{section*.11}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Sentence Agglomeration Algorithm}}{9}{algorithm.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textbf  {Annotator Guidelines.} Annotators are asked if the mention in text directly or indirectly implies a rare disease.}}{10}{figure.4}\protected@file@percent }
+\newlabel{fig:annotator_guidelines}{{4}{10}{\textbf {Annotator Guidelines.} Annotators are asked if the mention in text directly or indirectly implies a rare disease}{figure.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces \textbf  {Comparative Performance Metrics for Different Sized Text Chunks in RDMA for the Entiy Extraction Step.} We observe that performance declines slightly, but we are able to extract entities at a substantially higher rate (4x faster) from over 200,000 words.}}{10}{table.9}\protected@file@percent }
+\newlabel{tab:agglomeration_tradeoff}{{9}{10}{\textbf {Comparative Performance Metrics for Different Sized Text Chunks in RDMA for the Entiy Extraction Step.} We observe that performance declines slightly, but we are able to extract entities at a substantially higher rate (4x faster) from over 200,000 words}{table.9}{}}
+\citation{dong2023ontology_poor_annotations}
+\citation{dong2023ontology_poor_annotations}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces \textbf  {Initial Keyword-based Filtering Attempts} Our clinician identified numerous incorrectly annotated terms from the original entity set. For instance, "MR" was incorrectly tagged as "Multicentric reticulohistiocytosis" in \cite  {dong2023ontology_poor_annotations}'s annotations, though it commonly refers to "magnetic resonance". Our clinician flagged all abbreviations except HIT, ALS, and NPH. We also removed common disease terms like hyperlipidemia, as their rare variants are specifically defined differently in the Orphanet ontology. Finally, our clinician manually added the terms listed above. For each added term, we checked its presence in each document and, if found, added an annotation with its corresponding ORPHA code.}}{11}{table.10}\protected@file@percent }
+\newlabel{tab:Filtering_Details_ex}{{10}{11}{\textbf {Initial Keyword-based Filtering Attempts} Our clinician identified numerous incorrectly annotated terms from the original entity set. For instance, "MR" was incorrectly tagged as "Multicentric reticulohistiocytosis" in \cite {dong2023ontology_poor_annotations}'s annotations, though it commonly refers to "magnetic resonance". Our clinician flagged all abbreviations except HIT, ALS, and NPH. We also removed common disease terms like hyperlipidemia, as their rare variants are specifically defined differently in the Orphanet ontology. Finally, our clinician manually added the terms listed above. For each added term, we checked its presence in each document and, if found, added an annotation with its corresponding ORPHA code}{table.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces \textbf  {Rare Disease Annotation Statistics Before and After Initial Keyword Filtering.} We eliminated over 700 misannotated terms before conducting evaluations in the main manuscript.}}{11}{table.11}\protected@file@percent }
+\newlabel{tab:filtering_results_ex}{{11}{11}{\textbf {Rare Disease Annotation Statistics Before and After Initial Keyword Filtering.} We eliminated over 700 misannotated terms before conducting evaluations in the main manuscript}{table.11}{}}
+\newlabel{appendix:prompts}{{}{12}{Prompts}{section*.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textbf  {Entity Extraction Prompts.} We showcase both HPO extraction (left) and Rare Disease extraction (right) prompts here.}}{12}{figure.5}\protected@file@percent }
+\newlabel{fig:EntityExtractionPrompt}{{5}{12}{\textbf {Entity Extraction Prompts.} We showcase both HPO extraction (left) and Rare Disease extraction (right) prompts here}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \textbf  {Verifying an Entity is a Phenotype.} This reasoning step is used repeatedly in verifying all phenotype implications, whether done by a lab test or a generated implication. }}{13}{figure.6}\protected@file@percent }
+\newlabel{fig:DirectPhenotype}{{6}{13}{\textbf {Verifying an Entity is a Phenotype.} This reasoning step is used repeatedly in verifying all phenotype implications, whether done by a lab test or a generated implication}{figure.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \textbf  {Lab Test Check.} LLMs are asked to see if an entity is indicative of a lab test. }}{14}{figure.7}\protected@file@percent }
+\newlabel{fig:LabTestsCheck}{{7}{14}{\textbf {Lab Test Check.} LLMs are asked to see if an entity is indicative of a lab test}{figure.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces \textbf  {Lab Test Implication.} LLMs are asked to determine if a lab event indicates an abnormality in the patient.}}{15}{figure.8}\protected@file@percent }
+\newlabel{fig:LabTestsAnalysis}{{8}{15}{\textbf {Lab Test Implication.} LLMs are asked to determine if a lab event indicates an abnormality in the patient}{figure.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces \textbf  {Variant of Phenotype Verification.} This prompt is used to double check if an implied lab test phenotype is within the HPO ontology.}}{16}{figure.9}\protected@file@percent }
+\newlabel{fig:PhenotypeCorrectnessCheck}{{9}{16}{\textbf {Variant of Phenotype Verification.} This prompt is used to double check if an implied lab test phenotype is within the HPO ontology}{figure.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces \textbf  {Entity Implies Phenotype Check.} LLM is asked to check if an entity implies the possibility of a phenotype.}}{17}{figure.10}\protected@file@percent }
+\newlabel{fig:CheckIfImpliesPhenotypet}{{10}{17}{\textbf {Entity Implies Phenotype Check.} LLM is asked to check if an entity implies the possibility of a phenotype}{figure.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces \textbf  {Phenotype Implication Generation.} The LLM is asked to generate or predict what the implied phenotype is based on context and the entity.}}{18}{figure.11}\protected@file@percent }
+\newlabel{fig:PhenoImplicationGeneration}{{11}{18}{\textbf {Phenotype Implication Generation.} The LLM is asked to generate or predict what the implied phenotype is based on context and the entity}{figure.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces \textbf  {Phenotype Implication Reasoning Check.} The LLM is then asked to double check its implication to make sure it makes sense.}}{19}{figure.12}\protected@file@percent }
+\newlabel{fig:PhenotypeImplicationReasonableCheck}{{12}{19}{\textbf {Phenotype Implication Reasoning Check.} The LLM is then asked to double check its implication to make sure it makes sense}{figure.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces \textbf  {Phenotype Matching.} Finally, the LLM is asked to match the an entity or implied entity to a matching phenotype.}}{20}{figure.13}\protected@file@percent }
+\newlabel{fig:PhenotypeMatching}{{13}{20}{\textbf {Phenotype Matching.} Finally, the LLM is asked to match the an entity or implied entity to a matching phenotype}{figure.13}{}}
+\bibstyle{sn-mathphys-num}
+\bibdata{sn-bibliography}
+\bibcite{dettmers2023qlora_bits}{{1}{2023}{{Dettmers et~al.}}{{}}}
+\bibcite{newegg_3d5}{{2}{2025a}{{Newegg}}{{}}}
+\bibcite{newegg_velztorm}{{3}{2025b}{{Newegg}}{{}}}
+\bibcite{thinkmate_gpx}{{4}{2025}{{Thinkmate}}{{}}}
+\bibcite{yang2023enhancingphenotyperecognitionclinical}{{5}{2023}{{Yang et~al.}}{{}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces \textbf  {Rare Disease Entity Ontology Check.} This prompt checks if the entity is within the Orphanet ontology.}}{21}{figure.14}\protected@file@percent }
+\newlabel{fig:RDOntologyCheck}{{14}{21}{\textbf {Rare Disease Entity Ontology Check.} This prompt checks if the entity is within the Orphanet ontology}{figure.14}{}}
+\bibcite{garcia2024_HPORAG}{{6}{2024}{{Garcia et~al.}}{{}}}
+\bibcite{martinez2022raredis}{{7}{2022}{{Mart{\'\i }nez-deMiguel et~al.}}{{}}}
+\bibcite{johnson2016mimic3}{{8}{2016}{{Johnson et~al.}}{{}}}
+\bibcite{dong2023ontology_poor_annotations}{{9}{2023}{{Dong et~al.}}{{}}}
+\bibcite{weinreich2008orphanet}{{10}{2008}{{Weinreich et~al.}}{{}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces \textbf  {Rare Disease Check.} This prompt checks if the entity is actually disease, because not all Orphanet entities are diseases. }}{22}{figure.15}\protected@file@percent }
+\newlabel{fig:RDDiseaseCheck}{{15}{22}{\textbf {Rare Disease Check.} This prompt checks if the entity is actually disease, because not all Orphanet entities are diseases}{figure.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces \textbf  {Rare Disease Matching.} This prompt matches the verified entity to an Orpha code.}}{23}{figure.16}\protected@file@percent }
+\newlabel{fig:RDMatch}{{16}{23}{\textbf {Rare Disease Matching.} This prompt matches the verified entity to an Orpha code}{figure.16}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces \textbf  {Rare Disease Extraction Performance Comparison.} We showcase performance on the other 2 sets of rare disease mention labels, the noisy original and the human only corrected labels. We observe that RDMA has significantly higher precision than its baselines, and that it overall outperforms all of its baselines in F1. \textbf  {Bold} denotes best performance.}}{23}{table.12}\protected@file@percent }
+\newlabel{tab:label_correction}{{12}{23}{\textbf {Rare Disease Extraction Performance Comparison.} We showcase performance on the other 2 sets of rare disease mention labels, the noisy original and the human only corrected labels. We observe that RDMA has significantly higher precision than its baselines, and that it overall outperforms all of its baselines in F1. \textbf {Bold} denotes best performance}{table.12}{}}
+\gdef \@abspage@last{23}

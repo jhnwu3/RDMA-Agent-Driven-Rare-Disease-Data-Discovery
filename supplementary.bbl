@@ -1,0 +1,210 @@
+%% BioMed_Central_Bib_Style_v1.01
+
+\begin{thebibliography}{10}
+% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
+\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
+\ifx \binits  \undefined \def \binits#1{#1}\fi
+\ifx \bauthor  \undefined \def \bauthor#1{#1}\fi
+\ifx \batitle  \undefined \def \batitle#1{#1}\fi
+\ifx \bjtitle  \undefined \def \bjtitle#1{#1}\fi
+\ifx \bvolume  \undefined \def \bvolume#1{\textbf{#1}}\fi
+\ifx \byear  \undefined \def \byear#1{#1}\fi
+\ifx \bissue  \undefined \def \bissue#1{#1}\fi
+\ifx \bfpage  \undefined \def \bfpage#1{#1}\fi
+\ifx \blpage  \undefined \def \blpage #1{#1}\fi
+\ifx \burl  \undefined \def \burl#1{\textsf{#1}}\fi
+\ifx \doiurl  \undefined \def \doiurl#1{\url{https://doi.org/#1}}\fi
+\ifx \betal  \undefined \def \betal{\textit{et al.}}\fi
+\ifx \binstitute  \undefined \def \binstitute#1{#1}\fi
+\ifx \binstitutionaled  \undefined \def \binstitutionaled#1{#1}\fi
+\ifx \bctitle  \undefined \def \bctitle#1{#1}\fi
+\ifx \beditor  \undefined \def \beditor#1{#1}\fi
+\ifx \bpublisher  \undefined \def \bpublisher#1{#1}\fi
+\ifx \bbtitle  \undefined \def \bbtitle#1{#1}\fi
+\ifx \bedition  \undefined \def \bedition#1{#1}\fi
+\ifx \bseriesno  \undefined \def \bseriesno#1{#1}\fi
+\ifx \blocation  \undefined \def \blocation#1{#1}\fi
+\ifx \bsertitle  \undefined \def \bsertitle#1{#1}\fi
+\ifx \bsnm \undefined \def \bsnm#1{#1}\fi
+\ifx \bsuffix \undefined \def \bsuffix#1{#1}\fi
+\ifx \bparticle \undefined \def \bparticle#1{#1}\fi
+\ifx \barticle \undefined \def \barticle#1{#1}\fi
+\bibcommenthead
+\ifx \bconfdate \undefined \def \bconfdate #1{#1}\fi
+\ifx \botherref \undefined \def \botherref #1{#1}\fi
+\ifx \url \undefined \def \url#1{\textsf{#1}}\fi
+\ifx \bchapter \undefined \def \bchapter#1{#1}\fi
+\ifx \bbook \undefined \def \bbook#1{#1}\fi
+\ifx \bcomment \undefined \def \bcomment#1{#1}\fi
+\ifx \oauthor \undefined \def \oauthor#1{#1}\fi
+\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1}\fi
+\ifx \endbibitem  \undefined \def \endbibitem {}\fi
+\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
+\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
+\csname PreBibitemsHook\endcsname
+
+%%% 1
+\bibitem[\protect\citeauthoryear{Dettmers
+  et~al.}{2023}]{dettmers2023qlora_bits}
+\begin{botherref}
+\oauthor{\bsnm{Dettmers}, \binits{T.}},
+\oauthor{\bsnm{Pagnoni}, \binits{A.}},
+\oauthor{\bsnm{Holtzman}, \binits{A.}},
+\oauthor{\bsnm{Zettlemoyer}, \binits{L.}}:
+Qlora: Efficient finetuning of quantized llms.
+arXiv preprint arXiv:2305.14314
+(2023)
+\end{botherref}
+\endbibitem
+
+%%% 2
+\bibitem[\protect\citeauthoryear{Newegg}{2025a}]{newegg_3d5}
+\begin{botherref}
+\oauthor{\bsnm{Newegg}}:
+Product 3D5-000V-001R8.
+\url{https://www.newegg.com/p/3D5-000V-001R8}.
+Accessed: 2025-04-26
+(2025)
+\end{botherref}
+\endbibitem
+
+%%% 3
+\bibitem[\protect\citeauthoryear{Newegg}{2025b}]{newegg_velztorm}
+\begin{botherref}
+\oauthor{\bsnm{Newegg}}:
+Velztorm Gaming Desktop with NVIDIA RTX A6000, Intel Core i9-13900K.
+\url{https://www.newegg.com/velztorm-gaming-desktop-nvidia-rtx-a6000-intel-core-i9-13900k-32gb-ddr5-1tb-ssd-ace-i-black/p/3D5-000W-134U1}.
+Accessed: 2025-04-26
+(2025)
+\end{botherref}
+\endbibitem
+
+%%% 4
+\bibitem[\protect\citeauthoryear{Thinkmate}{2025}]{thinkmate_gpx}
+\begin{botherref}
+\oauthor{\bsnm{Thinkmate}}:
+GPX XN4-21S3-4GPU.
+\url{https://www.thinkmate.com/system/gpx-xn4-21s3-4gpu}.
+Accessed: 2025-04-26
+(2025)
+\end{botherref}
+\endbibitem
+
+%%% 5
+\bibitem[\protect\citeauthoryear{Yang
+  et~al.}{2023}]{yang2023enhancingphenotyperecognitionclinical}
+\begin{botherref}
+\oauthor{\bsnm{Yang}, \binits{J.}},
+\oauthor{\bsnm{Liu}, \binits{C.}},
+\oauthor{\bsnm{Deng}, \binits{W.}},
+\oauthor{\bsnm{Wu}, \binits{D.}},
+\oauthor{\bsnm{Weng}, \binits{C.}},
+\oauthor{\bsnm{Zhou}, \binits{Y.}},
+\oauthor{\bsnm{Wang}, \binits{K.}}:
+Enhancing Phenotype Recognition in Clinical Notes Using Large Language Models:
+  PhenoBCBERT and PhenoGPT
+(2023).
+\url{https://arxiv.org/abs/2308.06294}
+\end{botherref}
+\endbibitem
+
+%%% 6
+\bibitem[\protect\citeauthoryear{Garcia et~al.}{2024}]{garcia2024_HPORAG}
+\begin{botherref}
+\oauthor{\bsnm{Garcia}, \binits{B.T.}},
+\oauthor{\bsnm{Westerfield}, \binits{L.}},
+\oauthor{\bsnm{Yelemali}, \binits{P.}},
+\oauthor{\bsnm{Gogate}, \binits{N.}},
+\oauthor{\bsnm{Rivera-Munoz}, \binits{E.A.}},
+\oauthor{\bsnm{Du}, \binits{H.}},
+\oauthor{\bsnm{Dawood}, \binits{M.}},
+\oauthor{\bsnm{Jolly}, \binits{A.}},
+\oauthor{\bsnm{Lupski}, \binits{J.R.}},
+\oauthor{\bsnm{Posey}, \binits{J.E.}}:
+Improving automated deep phenotyping through large language models using
+  retrieval augmented generation.
+medRxiv,
+2024--12
+(2024)
+\end{botherref}
+\endbibitem
+
+%%% 7
+\bibitem[\protect\citeauthoryear{Mart{\'\i}nez-deMiguel
+  et~al.}{2022}]{martinez2022raredis}
+\begin{barticle}
+\bauthor{\bsnm{Mart{\'\i}nez-deMiguel}, \binits{C.}},
+\bauthor{\bsnm{Segura-Bedmar}, \binits{I.}},
+\bauthor{\bsnm{Chac{\'o}n-Solano}, \binits{E.}},
+\bauthor{\bsnm{Guerrero-Aspizua}, \binits{S.}}:
+\batitle{The raredis corpus: a corpus annotated with rare diseases, their signs
+  and symptoms}.
+\bjtitle{Journal of biomedical informatics}
+\bvolume{125},
+\bfpage{103961}
+(\byear{2022})
+\end{barticle}
+\endbibitem
+
+%%% 8
+\bibitem[\protect\citeauthoryear{Johnson et~al.}{2016}]{johnson2016mimic3}
+\begin{barticle}
+\bauthor{\bsnm{Johnson}, \binits{A.E.}},
+\bauthor{\bsnm{Pollard}, \binits{T.J.}},
+\bauthor{\bsnm{Shen}, \binits{L.}},
+\bauthor{\bsnm{Lehman}, \binits{L.-w.H.}},
+\bauthor{\bsnm{Feng}, \binits{M.}},
+\bauthor{\bsnm{Ghassemi}, \binits{M.}},
+\bauthor{\bsnm{Moody}, \binits{B.}},
+\bauthor{\bsnm{Szolovits}, \binits{P.}},
+\bauthor{\bsnm{Anthony~Celi}, \binits{L.}},
+\bauthor{\bsnm{Mark}, \binits{R.G.}}:
+\batitle{Mimic-iii, a freely accessible critical care database}.
+\bjtitle{Scientific data}
+\bvolume{3}(\bissue{1}),
+\bfpage{1}--\blpage{9}
+(\byear{2016})
+\end{barticle}
+\endbibitem
+
+%%% 9
+\bibitem[\protect\citeauthoryear{Dong
+  et~al.}{2023}]{dong2023ontology_poor_annotations}
+\begin{barticle}
+\bauthor{\bsnm{Dong}, \binits{H.}},
+\bauthor{\bsnm{Su{\'a}rez-Paniagua}, \binits{V.}},
+\bauthor{\bsnm{Zhang}, \binits{H.}},
+\bauthor{\bsnm{Wang}, \binits{M.}},
+\bauthor{\bsnm{Casey}, \binits{A.}},
+\bauthor{\bsnm{Davidson}, \binits{E.}},
+\bauthor{\bsnm{Chen}, \binits{J.}},
+\bauthor{\bsnm{Alex}, \binits{B.}},
+\bauthor{\bsnm{Whiteley}, \binits{W.}},
+\bauthor{\bsnm{Wu}, \binits{H.}}:
+\batitle{Ontology-driven and weakly supervised rare disease identification from
+  clinical notes}.
+\bjtitle{BMC Medical Informatics and Decision Making}
+\bvolume{23}(\bissue{1}),
+\bfpage{86}
+(\byear{2023})
+\end{barticle}
+\endbibitem
+
+%%% 10
+\bibitem[\protect\citeauthoryear{Weinreich
+  et~al.}{2008}]{weinreich2008orphanet}
+\begin{barticle}
+\bauthor{\bsnm{Weinreich}, \binits{S.S.}},
+\bauthor{\bsnm{Mangon}, \binits{R.}},
+\bauthor{\bsnm{Sikkens}, \binits{J.}},
+\bauthor{\bsnm{Teeuw}, \binits{M.E.}},
+\bauthor{\bsnm{Cornel}, \binits{M.}}:
+\batitle{Orphanet: a european database for rare diseases}.
+\bjtitle{Nederlands tijdschrift voor geneeskunde}
+\bvolume{152}(\bissue{9}),
+\bfpage{518}--\blpage{519}
+(\byear{2008})
+\end{barticle}
+\endbibitem
+
+\end{thebibliography}
